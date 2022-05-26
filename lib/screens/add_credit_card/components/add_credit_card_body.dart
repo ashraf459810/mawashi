@@ -58,7 +58,7 @@ class _AddCreditCartBodyState extends State<AddCreditCartBody> {
                         ),
                         Text(
                             ApplicationLocalizations.of(context)
-                                .translate("card_number"),
+                                !.translate("card_number"),
                             style: TextStyle(fontSize: kMicroFontSize)),
                         Text(
                           cardNumber,
@@ -75,7 +75,7 @@ class _AddCreditCartBodyState extends State<AddCreditCartBody> {
                               children: [
                                 Text(
                                     ApplicationLocalizations.of(context)
-                                        .translate("expiration"),
+                                        !.translate("expiration"),
                                     style: TextStyle(fontSize: kMicroFontSize)),
                                 Text(expiration,
                                     style:
@@ -87,7 +87,7 @@ class _AddCreditCartBodyState extends State<AddCreditCartBody> {
                               children: [
                                 Text(
                                     ApplicationLocalizations.of(context)
-                                        .translate("card_name"),
+                                        !.translate("card_name"),
                                     style: TextStyle(fontSize: kMicroFontSize)),
                                 Text(cardName,
                                     overflow: TextOverflow.clip,
@@ -114,7 +114,7 @@ class _AddCreditCartBodyState extends State<AddCreditCartBody> {
                 );
               },
               placeHolder:
-                  ApplicationLocalizations.of(context).translate("card_name"),
+                  ApplicationLocalizations.of(context)!.translate("card_name"),
               icon: Icons.person,
               height: 60.0,
               inputType: TextInputType.text,
@@ -129,7 +129,7 @@ class _AddCreditCartBodyState extends State<AddCreditCartBody> {
                 );
               },
               placeHolder:
-                  ApplicationLocalizations.of(context).translate("card_number"),
+                  ApplicationLocalizations.of(context)!.translate("card_number"),
               icon: Icons.credit_card,
               height: 60.0,
               inputType:
@@ -145,7 +145,7 @@ class _AddCreditCartBodyState extends State<AddCreditCartBody> {
                 );
               },
               placeHolder:
-                  ApplicationLocalizations.of(context).translate("expiration"),
+                  ApplicationLocalizations.of(context)!.translate("expiration"),
               icon: Icons.access_time,
               height: 60.0,
               inputType:
@@ -155,7 +155,7 @@ class _AddCreditCartBodyState extends State<AddCreditCartBody> {
             height: 20,
           ),
           ButtonCustom(
-            txt: ApplicationLocalizations.of(context).translate("save"),
+            txt: ApplicationLocalizations.of(context)!.translate("save"),
             ontap: () {
               Navigator.of(context).pop();
             },

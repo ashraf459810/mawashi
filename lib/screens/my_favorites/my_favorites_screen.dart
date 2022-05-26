@@ -10,7 +10,7 @@ class MyFavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: MyFavoritesBody(),
-      title: ApplicationLocalizations.of(context).translate("my_favorite"),
+      title: ApplicationLocalizations.of(context)!.translate("my_favorite"),
     );
   }
 }

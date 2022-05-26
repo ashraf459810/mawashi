@@ -37,10 +37,10 @@ class _SettingsBodyState extends State<SettingsBody> {
         child: Column(
           children: <Widget>[
             setting(
-              head: ApplicationLocalizations.of(context).translate("account"),
-              sub1: ApplicationLocalizations.of(context).translate("addresses"),
-              sub2: ApplicationLocalizations.of(context).translate("telephone"),
-              sub3: ApplicationLocalizations.of(context).translate("email"),
+              head: ApplicationLocalizations.of(context)!.translate("account"),
+              sub1: ApplicationLocalizations.of(context)!.translate("addresses"),
+              sub2: ApplicationLocalizations.of(context)!.translate("telephone"),
+              sub3: ApplicationLocalizations.of(context)!.translate("email"),
               sub1Tap: () {
                 addressBottomSheet();
               },
@@ -52,11 +52,11 @@ class _SettingsBodyState extends State<SettingsBody> {
               },
             ),
             setting(
-              head: ApplicationLocalizations.of(context).translate("settings"),
+              head: ApplicationLocalizations.of(context)!.translate("settings"),
               sub1: ApplicationLocalizations.of(context)
-                  .translate("notifications"),
-              sub2: ApplicationLocalizations.of(context).translate("dark_mode"),
-              sub3: ApplicationLocalizations.of(context).translate("languages"),
+               !   .translate("notifications"),
+              sub2: ApplicationLocalizations.of(context)!.translate("dark_mode"),
+              sub3: ApplicationLocalizations.of(context)!.translate("languages"),
               sub1Tap: () {
                 notificationBottomSheet();
               },
@@ -89,7 +89,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                               children: [
                                 NormalTextWidget(
                                     ApplicationLocalizations.of(context)
-                                        .translate("log_out_message"),
+                                  !      .translate("log_out_message"),
                                     Utils.isDarkMode
                                         ? kDarkBlackTextColor
                                         : kTextColorColor,
@@ -106,7 +106,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                                       child: ButtonCustom(
                                         txt:
                                             ApplicationLocalizations.of(context)
-                                                .translate("cancel"),
+                                         !       .translate("cancel"),
                                         ontap: () {
                                           Navigator.of(context).pop();
                                         },
@@ -122,7 +122,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                                       child: ButtonCustom(
                                         txt:
                                             ApplicationLocalizations.of(context)
-                                                .translate("logout"),
+                                            !    .translate("logout"),
                                         ontap: () {
                                           Navigator.of(context)
                                               .pushReplacementNamed(
@@ -156,7 +156,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                       children: [
                         Text(
                           ApplicationLocalizations.of(context)
-                              .translate("logout"),
+                         !     .translate("logout"),
                           style: _txtCustomHead,
                         ),
                         Icon(
@@ -190,13 +190,13 @@ class _SettingsBodyState extends State<SettingsBody> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          ApplicationLocalizations.of(context).appLocale =
-                              new Locale(languages[index].lanCode,
+                          ApplicationLocalizations.of(context)!.appLocale =
+                              new Locale(languages[index].lanCode!,
                                   languages[index].lanCountry);
-                          ApplicationLocalizations.of(context).load();
-                          Utils.appLocale = new Locale(languages[index].lanCode,
+                          ApplicationLocalizations.of(context)!.load();
+                          Utils.appLocale = new Locale(languages[index].lanCode!,
                               languages[index].lanCountry);
-                          AppBuilder.of(context).rebuild();
+                          AppBuilder.of(context)!.rebuild();
                           Navigator.pop(context);
                         });
                       },
@@ -205,13 +205,13 @@ class _SettingsBodyState extends State<SettingsBody> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             NormalTextWidget(
-                                languages[index].langName,
+                                languages[index].langName!,
                                 Utils.isDarkMode
                                     ? kDarkTextColorColor
                                     : kLightBlackTextColor,
                                 kTitleFontSize),
                             Text(
-                              languages[index].emoji,
+                              languages[index].emoji!,
                               style: TextStyle(fontSize: 20.0),
                             ),
                           ],
@@ -253,7 +253,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                                   kTitleFontSize),
                               ButtonCustom(
                                 txt: ApplicationLocalizations.of(context)
-                                    .translate("edit"),
+                                   ! .translate("edit"),
                                 ontap: () {
                                   Navigator.push(
                                       context,
@@ -278,7 +278,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                 ),
                 ButtonCustom(
                   txt: ApplicationLocalizations.of(context)
-                      .translate("add_address"),
+                   !   .translate("add_address"),
                   ontap: () {
                     Navigator.of(context).pushNamed(AddAddressScreen.routeName);
                   },
@@ -307,6 +307,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                   child: Container(
                     height: 50,
                     child: CustomTextFromField(
+                      onChanged: (){},
                       icon: Icons.phone,
                       ispassword: false,
                       placeHolder: "+09 123 123 12 12",
@@ -315,7 +316,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                   ),
                 ),
                 ButtonCustom(
-                  txt: ApplicationLocalizations.of(context).translate("save"),
+                  txt: ApplicationLocalizations.of(context)!.translate("save"),
                   ontap: () {
                     Navigator.of(context).pop();
                   },
@@ -344,6 +345,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                   child: Container(
                     height: 50,
                     child: CustomTextFromField(
+                      onChanged: (){},
                       icon: Icons.email,
                       ispassword: false,
                       placeHolder: "xamappdesign@gmail.com",
@@ -352,7 +354,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                   ),
                 ),
                 ButtonCustom(
-                  txt: ApplicationLocalizations.of(context).translate("save"),
+                  txt: ApplicationLocalizations.of(context)!.translate("save"),
                   ontap: () {
                     Navigator.of(context).pop();
                   },
@@ -387,7 +389,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                           children: [
                             NormalTextWidget(
                                 ApplicationLocalizations.of(context)
-                                    .translate("order_notif"),
+                                !    .translate("order_notif"),
                                 Utils.isDarkMode
                                     ? kDarkTextColorColor
                                     : kLightBlackTextColor,
@@ -410,7 +412,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                           children: [
                             NormalTextWidget(
                                 ApplicationLocalizations.of(context)
-                                    .translate("discount_notif"),
+                             !       .translate("discount_notif"),
                                 Utils.isDarkMode
                                     ? kDarkTextColorColor
                                     : kLightBlackTextColor,
@@ -451,7 +453,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                           children: [
                             NormalTextWidget(
                                 ApplicationLocalizations.of(context)
-                                    .translate("dark_mode"),
+                               !     .translate("dark_mode"),
                                 Utils.isDarkMode
                                     ? kDarkTextColorColor
                                     : kLightBlackTextColor,
@@ -461,7 +463,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                               valueChanged: (value) {
                                 Utils.isDarkMode = value;
                                 Navigator.of(context).pop();
-                                AppBuilder.of(context).rebuild();
+                                AppBuilder.of(context)!.rebuild();
                                 //CustomBottomNavigationBar.routeName);
                               },
                             ),
@@ -479,7 +481,7 @@ class _SettingsBodyState extends State<SettingsBody> {
 }
 
 class BottomSheetSwitch extends StatefulWidget {
-  BottomSheetSwitch({@required this.switchValue, @required this.valueChanged});
+  BottomSheetSwitch({required this.switchValue, required this.valueChanged});
 
   final bool switchValue;
   final ValueChanged valueChanged;
@@ -489,7 +491,7 @@ class BottomSheetSwitch extends StatefulWidget {
 }
 
 class _BottomSheetSwitch extends State<BottomSheetSwitch> {
-  bool _switchValue;
+  bool ? _switchValue;
 
   @override
   void initState() {
@@ -505,7 +507,7 @@ class _BottomSheetSwitch extends State<BottomSheetSwitch> {
           inactiveThumbColor: kAppColor,
           activeTrackColor: Colors.green.withOpacity(0.5),
           activeColor: kAppColor,
-          value: _switchValue,
+          value: _switchValue!,
           onChanged: (bool value) {
             setState(() {
               _switchValue = value;
@@ -518,7 +520,7 @@ class _BottomSheetSwitch extends State<BottomSheetSwitch> {
 
 class DarkModeBottomSheet extends StatefulWidget {
   DarkModeBottomSheet(
-      {@required this.switchValue, @required this.valueChanged});
+      {required this.switchValue, required this.valueChanged});
 
   final bool switchValue;
   final ValueChanged valueChanged;
@@ -527,7 +529,7 @@ class DarkModeBottomSheet extends StatefulWidget {
 }
 
 class _DarkModeBottomSheetState extends State<DarkModeBottomSheet> {
-  bool _switchValue;
+ late bool _switchValue;
   @override
   void initState() {
     _switchValue = widget.switchValue;
@@ -565,13 +567,14 @@ class setting extends StatelessWidget {
   GestureTapCallback sub2Tap;
   GestureTapCallback sub3Tap;
   setting(
-      {this.head,
-      this.sub1,
-      this.sub2,
-      this.sub3,
-      this.sub1Tap,
-      this.sub2Tap,
-      this.sub3Tap});
+      {
+    required    this.head,
+   required   this.sub1,
+   required   this.sub2,
+   required   this.sub3,
+    required  this.sub1Tap,
+    required  this.sub2Tap,
+    required  this.sub3Tap});
 
   @override
   Widget build(BuildContext context) {

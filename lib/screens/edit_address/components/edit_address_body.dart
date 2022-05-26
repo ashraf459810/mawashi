@@ -23,6 +23,7 @@ class _EditAddressBodyState extends State<EditAddressBody> {
         children: [
           SizedBox(height: 20),
           CustomTextFromField(
+            onChanged: (){},
             height: 60.0,
             icon: Icons.location_city,
             ispassword: false,
@@ -31,6 +32,7 @@ class _EditAddressBodyState extends State<EditAddressBody> {
           ),
           SizedBox(height: 20),
           CustomTextFromField(
+            onChanged: (){},
             height: 60.0,
             icon: Icons.pin_drop,
             ispassword: false,

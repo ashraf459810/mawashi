@@ -6,34 +6,35 @@ import '../util.dart';
 import 'card_widget.dart';
 
 class CustomTextFromField extends StatelessWidget {
-  bool ispassword;
-  String placeHolder;
-  IconData icon;
-  TextInputType inputType;
-  double height;
-  bool isMasked = false;
-  Function onChanged;
+  bool? ispassword;
+  String ?placeHolder;
+  IconData? icon;
+  TextInputType? inputType;
+  double ?height;
+  bool ?isMasked = false;
+  Function onChanged ;
   CustomTextFromField(
-      {this.placeHolder,
+      {
+        this.placeHolder,
       this.icon,
       this.inputType,
       this.ispassword,
-      this.onChanged,
+     required this.onChanged,
       this.isMasked,
       this.height = 50.0});
 
   @override
   Widget build(BuildContext context) {
     return CardWidget(
-      height: height,
+      height: height!,
       childWidget: Theme(
         data: ThemeData(
           hintColor: Colors.transparent,
         ),
         child: TextFormField(
-          onChanged: onChanged,
+          onChanged: onChanged(),
           textInputAction: TextInputAction.done,
-          obscureText: ispassword,
+          obscureText: ispassword!,
           style: TextStyle(
               color: Utils.isDarkMode
                   ? kDarkTextColorColor

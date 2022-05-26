@@ -15,9 +15,9 @@ class CategoriesResponseModel {
         this.data,
     });
 
-    int success;
-    List<dynamic> error;
-    List<Datum> data;
+    int? success;
+    List<dynamic>? error;
+    List<Datum> ?data;
 
     factory CategoriesResponseModel.fromJson(Map<String, dynamic> json) => CategoriesResponseModel(
         success: json["success"],
@@ -27,8 +27,8 @@ class CategoriesResponseModel {
 
     Map<String, dynamic> toJson() => {
         "success": success,
-        "error": List<dynamic>.from(error.map((x) => x)),
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "error": List<dynamic>.from(error!.map((x) => x)),
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
     };
 }
 
@@ -42,12 +42,12 @@ class Datum {
         this.parent,
     });
 
-    String id;
-    String description;
-    String count;
-    String name;
-    String image;
-    String parent;
+    String ?id;
+    String ?description;
+    String ?count;
+    String ?name;
+    String ?image;
+    String ?parent;
 
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json["id"],

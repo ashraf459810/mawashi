@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../util.dart';
 
 class CardWidget extends StatefulWidget {
-  Widget childWidget;
+ late  Widget childWidget;
   double height;
-  CardWidget({this.childWidget, this.height = 60.0});
+  CardWidget({required this.childWidget, this.height = 60.0});
 
   @override
   _CardWidgetState createState() => _CardWidgetState();

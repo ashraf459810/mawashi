@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 Widget container({
-  BoxShape boxShape,
-  double hight,
-  double width,
-  double borderRadius,
-  Color color,
-  Color bordercolor,
-  Widget child,
-  bool shadow,
-  Alignment alignment
+  BoxShape? boxShape,
+  double? hight,
+  double? width,
+  double? borderRadius,
+  Color? color,
+  Color ?bordercolor,
+  Widget? child,
+  bool ?shadow,
 }) {
   return Container(
     
-      alignment: alignment?? Alignment.center,
+      alignment: Alignment.center,
     height: hight,
     width: width,
     child: child,
@@ -26,7 +25,7 @@ Widget container({
       boxShadow: [
         shadow ?? false
             ? BoxShadow(
-                color: Colors.grey[400].withOpacity(0.5),
+                color: Colors.grey[400]!.withOpacity(0.5),
                 spreadRadius: 4,
                 blurRadius: 6,
                 offset: const Offset(0, 1), // changes position of shadow

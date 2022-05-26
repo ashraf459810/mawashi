@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class RadioButtonCustom extends StatefulWidget {
-  String txt;
+  String? txt;
 
   RadioButtonCustom({this.txt});
 
   @override
-  _RadioButtonCustomState createState() => _RadioButtonCustomState(this.txt);
+  _RadioButtonCustomState createState() => _RadioButtonCustomState(this.txt!);
 }
 
 class _RadioButtonCustomState extends State<RadioButtonCustom> {

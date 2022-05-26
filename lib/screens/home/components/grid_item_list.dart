@@ -8,9 +8,10 @@ import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant.dart';
+import '../../brand_detail/models/category_items_response_model.dart';
 
 class GridListBuilder extends StatefulWidget {
-  Widget Item;
+  Widget? Item;
   @override
   _GridListBuilderState createState() => _GridListBuilderState();
 }
@@ -20,7 +21,7 @@ class _GridListBuilderState extends State<GridListBuilder> {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 2,
-      childAspectRatio: (140 / Utils.GridHeight()),
+      childAspectRatio: (140 / Utils.GridHeight()!.toDouble()),
       controller: new ScrollController(keepScrollOffset: false),
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
@@ -31,14 +32,14 @@ class _GridListBuilderState extends State<GridListBuilder> {
             child: Material(
               child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProductDetailScreen(value)));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => ProductDetailScreen(value)));
                   },
                   child: FittedBox(
                     child: ProductItemBuilder(
-                        isDiscount: false, productItem: value),
+                        isDiscount: false, productItem: Item()),
                   )),
             ),
           );

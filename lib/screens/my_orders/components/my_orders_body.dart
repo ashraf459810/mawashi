@@ -36,7 +36,7 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: CardWidget(
-          height: myFavList[index].itemHeight,
+          height: myFavList[index].itemHeight!,
           childWidget: Column(
             children: [
               Row(
@@ -50,7 +50,7 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
                         borderRadius: BorderRadius.circular(10.0),
                         image: DecorationImage(
                           fit: BoxFit.fitHeight,
-                          image: AssetImage(myFavList[index].productImage),
+                          image: AssetImage(myFavList[index].productImage!),
                         )),
                   ),
                   Expanded(
@@ -58,14 +58,14 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(myFavList[index].productName,
+                        Text(myFavList[index].productName!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Utils.isDarkMode
                                     ? kDarkTextColorColor
                                     : kLightBlackTextColor,
                                 fontSize: kTitleFontSize)),
-                        Text(myFavList[index].companyName,
+                        Text(myFavList[index].companyName!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: kGrayColor, fontSize: kSmallFontSize)),
@@ -93,7 +93,7 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
                             myFavList[index].isSelect == false;
                         print(myFavList[index].isSelect);
                         myFavList[index].arrowRotate =
-                            myFavList[index].isSelect ? 90 : 0;
+                            myFavList[index].isSelect! ? 90 : 0;
                         if (myFavList[index].itemHeight == 150)
                           myFavList[index].itemHeight = 250;
                         else {
@@ -108,14 +108,14 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
                     children: [
                       NormalTextWidget(
                           ApplicationLocalizations.of(context)
-                              .translate("show_mote_detail"),
+                            !  .translate("show_mote_detail"),
                           Utils.isDarkMode
                               ? kDarkTextColorColor
                               : kLightBlackTextColor,
                           kSubTitleFontSize),
                       RotationTransition(
                         turns: new AlwaysStoppedAnimation(
-                            myFavList[index].arrowRotate / 360),
+                            myFavList[index].arrowRotate! / 360),
                         child: Icon(Icons.arrow_forward_ios,
                             size: 25, color: kAppColor),
                       ),
@@ -124,23 +124,23 @@ class _MyOrdersBodyState extends State<MyOrdersBody>
                 ),
               ),
               Visibility(
-                visible: myFavList[index].isSelect,
+                visible: myFavList[index].isSelect!,
                 child: Column(
                   children: [
                     buildOrderInfo(
                         index,
                         ApplicationLocalizations.of(context)
-                            .translate("order_no"),
+                           ! .translate("order_no"),
                         myFavList[index].orderNo.toString()),
                     buildOrderInfo(
                         index,
                         ApplicationLocalizations.of(context)
-                            .translate("order_date"),
+                           ! .translate("order_date"),
                         Jiffy(myFavList[index].orderDate).yMMMd),
                     buildOrderInfo(
                         index,
                         ApplicationLocalizations.of(context)
-                            .translate("order_status"),
+                        !    .translate("order_status"),
                         myFavList[index].orderStatus.toString()),
                   ],
                 ),

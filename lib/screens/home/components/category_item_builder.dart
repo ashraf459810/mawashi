@@ -25,7 +25,7 @@ class _CategoryListItemBuilderState extends State<CategoryListItemBuilder> {
           
           image: DecorationImage(
             fit: BoxFit.fitWidth,
-            image: NetworkImage(widget._categoryModel.image),
+            image: NetworkImage(widget._categoryModel.image!),
           ),
         ),
         child: Stack(
@@ -41,7 +41,7 @@ class _CategoryListItemBuilderState extends State<CategoryListItemBuilder> {
             ),
             Center(
               child: Text(
-                widget._categoryModel.name,
+                widget._categoryModel.name!,
                 style: TextStyle(
                     color: kWhiteColor,
                     fontSize: kTitleFontSize,

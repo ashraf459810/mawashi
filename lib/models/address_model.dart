@@ -9,15 +9,16 @@ class Address {
   String selectStreet;
 
   Address(
-      {this.id,
-      this.addressName,
-      this.addressPinCode,
-      this.selectCountry,
-      this.selectCity,
-      this.selectStreet});
+      {
+     required   this.id,
+   required  this.addressName,
+   required   this.addressPinCode,
+   required   this.selectCountry,
+   required  this.selectCity,
+   required   this.selectStreet});
 }
 
-List<Address> addressList = [
+List<Address>  addressList = [
   Address(
       id: Uuid().v4(),
       addressName: "Home Address",

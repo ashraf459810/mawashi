@@ -5,6 +5,7 @@ import 'package:dellyshop/widgets/default_texfromfield.dart';
 import 'package:dellyshop/widgets/social_button.dart';
 import 'package:dellyshop/widgets/text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_localizations.dart';
 import '../../../constant.dart';
@@ -28,7 +29,7 @@ class _LoginBodyState extends State<LoginBody> {
         /// Set Background image in layout (Click to open code)
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage("assets/images/shopper1.jpg"),
+          image: AssetImage("assets/images/sheep.jpeg"),
           fit: BoxFit.cover,
         )),
         child: Container(
@@ -59,8 +60,9 @@ class _LoginBodyState extends State<LoginBody> {
                             padding: EdgeInsets.only(
                                 top: mediaQueryData.padding.top + 40.0)),
                         Image(
-                          image: AssetImage("assets/images/DellyLogo.png"),
+                          image: AssetImage("assets/images/logo.png"),
                           height: 100.0,
+                          width: 150.w,
                         ),
                         SizedBox(
                           height: 50,
@@ -69,10 +71,11 @@ class _LoginBodyState extends State<LoginBody> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30.0),
                           child: CustomTextFromField(
+                            onChanged: (){},
                             icon: Icons.email,
                             ispassword: false,
                             placeHolder: ApplicationLocalizations.of(context)
-                                .translate("email"),
+                               ! .translate("email"),
                             inputType: TextInputType.emailAddress,
                           ),
                         ),
@@ -83,16 +86,17 @@ class _LoginBodyState extends State<LoginBody> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30.0),
                           child: CustomTextFromField(
+                            onChanged: (){},
                             icon: Icons.lock,
                             ispassword: true,
                             placeHolder: ApplicationLocalizations.of(context)
-                                .translate("password"),
+                           !     .translate("password"),
                             inputType: TextInputType.text,
                           ),
                         ),
                         CutomTextButton(
                             ApplicationLocalizations.of(context)
-                                .translate("not_have_account"), () {
+                            !    .translate("not_have_account"), () {
                           Navigator.of(context)
                               .pushNamed((RegisterScreen.routeName));
                         }),
@@ -101,7 +105,7 @@ class _LoginBodyState extends State<LoginBody> {
                         ),
                         ButtonCustom(
                           txt: ApplicationLocalizations.of(context)
-                              .translate("sign_in"),
+                           !   .translate("sign_in"),
                           ontap: () {
                             Navigator.of(context).pushReplacementNamed(
                                 CustomBottomNavigationBar.routeName);
@@ -111,7 +115,7 @@ class _LoginBodyState extends State<LoginBody> {
                         ),
                         Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
                         Text(
-                          ApplicationLocalizations.of(context).translate("or"),
+                          ApplicationLocalizations.of(context)!.translate("or"),
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
                               color: Colors.white,

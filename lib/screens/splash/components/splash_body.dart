@@ -13,7 +13,7 @@ class SplashBody extends StatefulWidget {
 }
 
 class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
-  AnimationController animationController;
+  AnimationController ?animationController;
   var tapLogin = 0;
   var tapSignup = 0;
   @override
@@ -25,6 +25,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
           Container(
             color: Colors.white,
             child: new Carousel(
+               overlayShadowColors: Colors.transparent, radius: Radius.zero, radiusDouble: 0,
               boxFit: BoxFit.cover,
               autoplay: true,
               animationDuration: Duration(milliseconds: 300),
@@ -68,7 +69,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
                     padding: EdgeInsets.only(top: 20, left: 10, right: 10),
                     child: Text(
                       ApplicationLocalizations.of(context)
-                          .translate('splash_desc'),
+                       !   .translate('splash_desc'),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
@@ -80,7 +81,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
                   Padding(padding: EdgeInsets.only(top: 150.0)),
                   ButtonCustom(
                     txt: ApplicationLocalizations.of(context)
-                        .translate('sign_up'),
+                  !      .translate('sign_up'),
                     bacgroudColor: Colors.transparent,
                     textColor: kWhiteColor,
                     ontap: () {
@@ -104,7 +105,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
                         /// navigation to home screen if user click "OR SKIP" (Click to open code)
                         child: Text(
                           ApplicationLocalizations.of(context)
-                              .translate('or_skip'),
+                             ! .translate('or_skip'),
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w200,
@@ -124,7 +125,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
                   Padding(padding: EdgeInsets.only(top: 20.0)),
                   ButtonCustom(
                     txt: ApplicationLocalizations.of(context)
-                        .translate('sign_in'),
+                       ! .translate('sign_in'),
                     bacgroudColor: Colors.transparent,
                     textColor: kWhiteColor,
                     ontap: () {
@@ -160,14 +161,14 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    animationController.dispose();
+    animationController!.dispose();
   }
 
   /// Playanimation set forward reverse
   Future<Null> _Playanimation() async {
     try {
-      await animationController.forward();
-      await animationController.reverse();
+      await animationController!.forward();
+      await animationController!.reverse();
     } on TickerCanceled {}
   }
 }

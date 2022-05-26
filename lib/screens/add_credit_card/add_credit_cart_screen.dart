@@ -10,7 +10,7 @@ class AddCreditCardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
         title:
-            ApplicationLocalizations.of(context).translate("add_credit_card"),
+            ApplicationLocalizations.of(context)!.translate("add_credit_card"),
         body: AddCreditCartBody());
   }
 }

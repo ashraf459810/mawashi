@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../constant.dart';
 
 class CustomScaffold extends StatelessWidget {
-  Widget body;
-  String title;
+  Widget? body;
+  String ?title;
   CustomScaffold({this.body, this.title});
 
   @override
@@ -19,7 +19,7 @@ class CustomScaffold extends StatelessWidget {
               Utils.isDarkMode ? kDarkDefaultBgColor : kDefaultBgColor,
           iconTheme: IconThemeData(color: kAppColor),
           centerTitle: true,
-          title: PageTitle(title),
+          title: PageTitle(title!),
         ),
         body: body);
   }

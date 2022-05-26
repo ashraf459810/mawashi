@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../../../app_localizations.dart';
 import '../../../util.dart';
+import '../../brand_detail/models/category_items_response_model.dart';
 
 class ProductItemBuilder extends StatefulWidget {
-  bool isDiscount;
-  ProductItemModel productItem;
+  bool? isDiscount;
+  Item ?productItem;
   ProductItemBuilder({this.isDiscount, this.productItem});
 
   @override
@@ -49,11 +50,11 @@ class _ProductItemBuilderState extends State<ProductItemBuilder> {
                               topLeft: Radius.circular(7.0),
                               topRight: Radius.circular(7.0)),
                           image: DecorationImage(
-                              image: AssetImage(widget.productItem.image),
+                              image: NetworkImage( "https://livestock.mjnna.com/image/"+widget.productItem!.image!),
                               fit: BoxFit.cover)),
                     ),
                     Opacity(
-                      opacity: widget.isDiscount ? 1.0 : 0.0,
+                      opacity: widget.isDiscount! ? 1.0 : 0.0,
                       child: Container(
                         height: 25.5,
                         width: 55.0,
@@ -91,7 +92,7 @@ class _ProductItemBuilderState extends State<ProductItemBuilder> {
                             padding:
                                 const EdgeInsets.only(left: 15.0, right: 15.0),
                             child: Text(
-                              widget.productItem.title,
+                              widget.productItem!.name!,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -109,7 +110,7 @@ class _ProductItemBuilderState extends State<ProductItemBuilder> {
                           padding:
                               const EdgeInsets.only(left: 15.0, right: 15.0),
                           child: Text(
-                            widget.productItem.normalPrice,
+                            widget.productItem!.price!,
                             style: TextStyle(
                                 color: kAppColor,
                                 fontWeight: FontWeight.w500,
@@ -126,7 +127,7 @@ class _ProductItemBuilderState extends State<ProductItemBuilder> {
                               Row(
                                 children: <Widget>[
                                   Text(
-                                    widget.productItem.ratingValue,
+                                    widget.productItem!.rating.toString(),
                                     style: TextStyle(
                                         color: Utils.isDarkMode
                                             ? kDarkBlackTextColor
@@ -142,7 +143,7 @@ class _ProductItemBuilderState extends State<ProductItemBuilder> {
                                 ],
                               ),
                               Text(
-                                "${widget.productItem.sale} ${ApplicationLocalizations.of(context).translate("sale")}",
+                                "${widget.productItem!.price} ${ApplicationLocalizations.of(context)!.translate("sale")}",
                                 style: TextStyle(
                                     color: kGrayColor,
                                     fontWeight: FontWeight.w500,

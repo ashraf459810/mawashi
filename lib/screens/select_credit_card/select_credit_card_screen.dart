@@ -11,7 +11,7 @@ class SelectCreditCartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
         title: ApplicationLocalizations.of(context)
-            .translate("select_credit_card"),
+          !  .translate("select_credit_card"),
         body: SelectCreditCardBody());
   }
 }

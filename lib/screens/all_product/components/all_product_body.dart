@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../util.dart';
+import '../../brand_detail/models/category_items_response_model.dart';
 
 class AllProductScreenBody extends StatefulWidget {
   @override
@@ -47,7 +48,7 @@ class _AllProductScreenBody extends State<AllProductScreenBody> {
         ),
         GridView.count(
           crossAxisCount: 2,
-          childAspectRatio: (140 / Utils.GridHeight()),
+          childAspectRatio: (140 / Utils.GridHeight()!).h,
           controller: new ScrollController(keepScrollOffset: false),
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
@@ -58,15 +59,15 @@ class _AllProductScreenBody extends State<AllProductScreenBody> {
                 child: Material(
                   child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductDetailScreen(value)));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             ProductDetailScreen(value)));
                       },
                       child: FittedBox(
                         child: ProductItemBuilder(
-                            isDiscount: false, productItem: value),
+                            isDiscount: false, productItem: Item()),
                       )),
                 ),
               );

@@ -2,8 +2,8 @@ import 'package:dellyshop/constant.dart';
 import 'package:flutter/material.dart';
 
 class GradientButton extends StatelessWidget {
-  String title;
-  GestureTapCallback onTap;
+  String ?title;
+  GestureTapCallback? onTap;
 
   GradientButton({this.title, this.onTap});
 
@@ -17,7 +17,7 @@ class GradientButton extends StatelessWidget {
           height: 55.0,
           width: 600.0,
           child: Text(
-            title,
+            title!,
             style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 0.2,

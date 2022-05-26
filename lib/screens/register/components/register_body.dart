@@ -4,7 +4,6 @@ import 'package:dellyshop/screens/login/login_screen.dart';
 import 'package:dellyshop/widgets/bottom_navigation_bar.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/default_texfromfield.dart';
-import 'package:dellyshop/widgets/social_button.dart';
 import 'package:dellyshop/widgets/text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -68,10 +67,12 @@ class _RegisterBodyState extends State<RegisterBody> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30.0),
                           child: CustomTextFromField(
+                            onChanged: (){},
+
                             icon: Icons.email,
                             ispassword: false,
                             placeHolder: ApplicationLocalizations.of(context)
-                                .translate("email"),
+                             !   .translate("email"),
                             inputType: TextInputType.emailAddress,
                           ),
                         ),
@@ -82,16 +83,17 @@ class _RegisterBodyState extends State<RegisterBody> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30.0),
                           child: CustomTextFromField(
+                            onChanged: (){},
                             icon: Icons.vpn_key,
                             ispassword: true,
                             placeHolder: ApplicationLocalizations.of(context)
-                                .translate("password"),
+                     !           .translate("password"),
                             inputType: TextInputType.text,
                           ),
                         ),
                         CutomTextButton(
                             ApplicationLocalizations.of(context)
-                                .translate("have_account"), () {
+                       !         .translate("have_account"), () {
                           Navigator.of(context)
                               .pushNamed((LoginScreen.routeName));
                         }),
@@ -101,7 +103,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                         ),
                         ButtonCustom(
                           txt: ApplicationLocalizations.of(context)
-                              .translate("sign_up"),
+                             ! .translate("sign_up"),
                           ontap: () {
                             Navigator.of(context).pushReplacementNamed(
                                 CustomBottomNavigationBar.routeName);

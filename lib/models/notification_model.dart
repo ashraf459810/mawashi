@@ -1,11 +1,11 @@
 import 'package:uuid/uuid.dart';
 
 class NotificationModel {
-  String title;
-  String image;
-  String id;
-  String description;
-  DateTime notificationTime;
+  String? title;
+  String ?image;
+  String ?id;
+  String ?description;
+  DateTime ?notificationTime;
 
   NotificationModel(
       {this.title,

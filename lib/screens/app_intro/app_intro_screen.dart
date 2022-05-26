@@ -2,7 +2,7 @@ import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/screens/splash/splash_screen.dart';
 import 'package:dellyshop/widgets/normal_text.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_views_flutter/Models/page_view_model.dart';
+
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
 class AppIntroScreen extends StatefulWidget {

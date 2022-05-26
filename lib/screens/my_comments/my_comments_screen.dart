@@ -10,7 +10,7 @@ class MyCommentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: MyCommentsBody(),
-      title: ApplicationLocalizations.of(context).translate("my_comments"),
+      title: ApplicationLocalizations.of(context)!.translate("my_comments"),
     );
   }
 }

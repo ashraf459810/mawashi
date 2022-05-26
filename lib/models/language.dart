@@ -1,8 +1,8 @@
 class Language {
-  String lanCode;
-  String lanCountry;
-  String langName;
-  String emoji;
+  String? lanCode;
+  String ?lanCountry;
+  String ?langName;
+  String ?emoji;
 
   Language({this.lanCode, this.lanCountry, this.langName, this.emoji});
 }

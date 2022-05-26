@@ -2,11 +2,11 @@ import 'package:dellyshop/models/product_item_model.dart';
 import 'package:uuid/uuid.dart';
 
 class Brand {
-  String id;
-  String name;
-  String img;
-  String desc;
-  ProductItemModel item;
+  String ?id;
+  String ?name;
+  String ?img;
+  String ?desc;
+  ProductItemModel ?item;
 
   Brand({
     this.img,

@@ -15,7 +15,7 @@ class EditProfileBody extends StatefulWidget {
 }
 
 class _EditProfileBodyState extends State<EditProfileBody> {
-  File _image;
+  File? _image;
   final picker = ImagePicker();
 
   @override
@@ -47,7 +47,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                   image: _image == null
                                       ? AssetImage(
                                           "assets/images/profilepic.jpg")
-                                      : FileImage(_image),
+                                      : AssetImage(_image!.path),
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -58,7 +58,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                             color: Colors.black.withOpacity(0.5),
                             child: NormalTextWidget(
                                 ApplicationLocalizations.of(context)
-                                    .translate("edit"),
+                                    !.translate("edit"),
                                 kWhiteColor,
                                 kMicroFontSize),
                           )
@@ -73,6 +73,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               children: [
                 Expanded(
                   child: CustomTextFromField(
+                    onChanged: (){},
                     height: 60.0,
                     icon: Icons.person,
                     ispassword: false,
@@ -85,6 +86,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                 ),
                 Expanded(
                   child: CustomTextFromField(
+                    onChanged: (){},
                     height: 60.0,
                     icon: Icons.person,
                     ispassword: false,
@@ -98,6 +100,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               height: 10.0,
             ),
             CustomTextFromField(
+              onChanged: (){},
               height: 60.0,
               icon: Icons.mail,
               ispassword: false,
@@ -108,7 +111,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
               height: 10.0,
             ),
             ButtonCustom(
-              txt: ApplicationLocalizations.of(context).translate("save"),
+              txt: ApplicationLocalizations.of(context)!.translate("save"),
               ontap: () {
                 Navigator.of(context).pop();
               },

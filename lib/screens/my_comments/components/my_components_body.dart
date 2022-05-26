@@ -15,6 +15,47 @@ class MyCommentsBody extends StatefulWidget {
 
 class _MyCommentsBodyState extends State<MyCommentsBody>
     with TickerProviderStateMixin {
+      List<MyCommentModel> myCommentList = [
+  MyCommentModel(
+    id: 1,
+    productName: "iPhone 11 Pro 64 GB",
+    companyName: "Apple",
+    productImage: kiPhoneImg,
+    range: 3,
+    commentDate: DateTime.now(),
+    userName: "Ufuk Zimmerman",
+    userComment:
+        "Good quality and beautiful product. The cargo arrived later than expected.",
+    isSelect: false,
+    price: 949.99,
+  ),
+  MyCommentModel(
+    id: 2,
+    productName: "Macbook Pro 13\" 256 GB",
+    companyName: "Apple",
+    productImage: "assets/images/mackbook.jpg",
+    userName: "Ufuk Zimmerman",
+    userComment: "Nice machine, I love Apple products!",
+    range: 5,
+    commentDate: DateTime.now(),
+    isSelect: false,
+    price: 449.99,
+  ),
+  MyCommentModel(
+    id: 3,
+    productName: "Nike Air Max 270",
+    companyName: "Nike",
+    productImage: "assets/images/shoes2.jpg",
+    range: 4,
+    commentDate: DateTime.now(),
+    userName: "Ufuk Zimmerman",
+    userComment:
+        "It is a very fast and stable product. I really like! The cargo arrived very quickly. I am very pleased with this situation. I will now make my other orders with you.",
+    isSelect: false,
+    price: 130.99,
+  )
+];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +77,7 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: CardWidget(
-          height: myCommentList[index].itemHeight,
+          height: myCommentList[index].itemHeight!,
           childWidget: Column(
             children: [
               Row(
@@ -50,7 +91,7 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
                         borderRadius: BorderRadius.circular(10.0),
                         image: DecorationImage(
                           fit: BoxFit.fitHeight,
-                          image: AssetImage(myCommentList[index].productImage),
+                          image: AssetImage(myCommentList[index].productImage!),
                         )),
                   ),
                   Expanded(
@@ -58,14 +99,14 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(myCommentList[index].productName,
+                        Text(myCommentList[index].productName!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Utils.isDarkMode
                                     ? kDarkTextColorColor
                                     : kLightBlackTextColor,
                                 fontSize: kTitleFontSize)),
-                        Text(myCommentList[index].companyName,
+                        Text(myCommentList[index].companyName!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: kGrayColor, fontSize: kSmallFontSize)),
@@ -91,7 +132,7 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
                         myCommentList[index].isSelect =
                             myCommentList[index].isSelect == false;
                         myCommentList[index].arrowRotate =
-                            myCommentList[index].isSelect ? 90 : 0;
+                            myCommentList[index].isSelect! ? 90 : 0;
                         if (myCommentList[index].itemHeight == 150)
                           myCommentList[index].itemHeight = 250;
                         else {
@@ -104,10 +145,10 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      StarDisplay(value: myCommentList[index].range),
+                      StarDisplay(value: myCommentList[index].range!),
                       RotationTransition(
                         turns: new AlwaysStoppedAnimation(
-                            myCommentList[index].arrowRotate / 360),
+                            myCommentList[index].arrowRotate! / 360),
                         child: Icon(Icons.arrow_forward_ios,
                             size: 25, color: kAppColor),
                       ),
@@ -116,7 +157,7 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
                 ),
               ),
               Visibility(
-                visible: myCommentList[index].isSelect,
+                visible: myCommentList[index].isSelect!,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -124,7 +165,7 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        NormalTextWidget(myCommentList[index].userName,
+                        NormalTextWidget(myCommentList[index].userName!,
                             kAppColor, kTitleFontSize),
                         NormalTextWidget(
                             Jiffy(myCommentList[index].commentDate).yMMMd,
@@ -138,7 +179,7 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
                       height: 10,
                     ),
                     Text(
-                      myCommentList[index].userComment,
+                      myCommentList[index].userComment!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                       style: TextStyle(

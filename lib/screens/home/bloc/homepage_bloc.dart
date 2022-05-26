@@ -13,7 +13,7 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
      if (event is GetCategoriesEvent){
        print("here from bloc");
        emit (LoadingCategoryState());
-       var response  = await getCategoies.getUsecase("/index.php?route=extension/mstore/category&limit=100&lang=ar", ([response]) => categoriesResponseModelFromJson(response));
+       var response  = await getCategoies.getUsecase("/index.php?route=extension/mstore/category&limit=100&lang=ar", ([response]) => categoriesResponseModelFromJson(response!));
        response.fold((l) => emit(Error(l.message)), (r) => emit(GetCategoriesState(r)));
      }
     });

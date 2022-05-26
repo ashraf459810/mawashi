@@ -6,8 +6,8 @@ import '../util.dart';
 import 'card_widget.dart';
 
 class CustomDropDownButton extends StatefulWidget {
-  List<String> dropDownButtonItems = [];
-  String placeHolder;
+  List<String> ?dropDownButtonItems = [];
+  String? placeHolder;
   CustomDropDownButton({@required this.dropDownButtonItems, this.placeHolder});
 
   @override
@@ -23,7 +23,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
         child: DropdownButton<String>(
           dropdownColor: Utils.isDarkMode ? kDarkGrayColor : kWhiteColor,
           value: dropdownvalue,
-          hint: TextWidget(widget.placeHolder,
+          hint: TextWidget(widget.placeHolder!,
               Utils.isDarkMode ? kDarkTextColorColor : kLightBlackTextColor),
           icon: Icon(
             Icons.keyboard_arrow_down,
@@ -32,13 +32,13 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
           ),
           iconSize: 28,
           elevation: 20,
-          onChanged: (String newval) {
+          onChanged: (String ?newval) {
             setState(() {
               dropdownvalue = newval;
             });
           },
           items: widget.dropDownButtonItems
-              .map<DropdownMenuItem<String>>((String value) {
+              !.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value,

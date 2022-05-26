@@ -37,6 +37,7 @@ class _SelectCreditCardBodyState extends State<SelectCreditCardBody> {
             children: [
               Expanded(
                 child: CustomTextFromField(
+                  onChanged: (){},
                     placeHolder: "Cvv",
                     icon: Icons.credit_card,
                     height: 60.0,
@@ -55,7 +56,7 @@ class _SelectCreditCardBodyState extends State<SelectCreditCardBody> {
                     children: [
                       TextWidget(
                           ApplicationLocalizations.of(context)
-                              .translate("add_credit_card"),
+                         !     .translate("add_credit_card"),
                           Utils.isDarkMode
                               ? kDarkTextColorColor
                               : kLightBlackTextColor),
@@ -72,7 +73,7 @@ class _SelectCreditCardBodyState extends State<SelectCreditCardBody> {
           ),
           SizedBox(height: 20),
           ButtonCustom(
-            txt: ApplicationLocalizations.of(context).translate("choose_pay"),
+            txt: ApplicationLocalizations.of(context)!.translate("choose_pay"),
             ontap: () {
               Navigator.of(context).pushNamed(PaymentScreen.routeName);
             },

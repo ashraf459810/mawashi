@@ -7,7 +7,6 @@ import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:dellyshop/widgets/custom_drop_down_button.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/text_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../util.dart';
@@ -20,12 +19,12 @@ class CartBody extends StatefulWidget {
 class _CartBodyState extends State<CartBody> {
   var selectedUser;
 
-  double totalListHeight;
+  double ?totalListHeight;
   double itemHeight = 120;
   int index = 1;
   int value = 2;
   int pay = 200;
-  int totalpay;
+  int? totalpay;
   @override
   Widget build(BuildContext context) {
     totalpay = pay * value;
@@ -67,7 +66,7 @@ class _CartBodyState extends State<CartBody> {
               child: ListTile(
                 title: Text(
                   ApplicationLocalizations.of(context)
-                      .translate("shipping_cost"),
+                  !    .translate("shipping_cost"),
                   style: TextStyle(
                       color: Utils.isDarkMode
                           ? kDarkBlackTextColor
@@ -75,7 +74,7 @@ class _CartBodyState extends State<CartBody> {
                 ),
                 subtitle: Text(
                   ApplicationLocalizations.of(context)
-                      .translate("ship_company"),
+                     ! .translate("ship_company"),
                   style: TextStyle(
                       color:
                           Utils.isDarkMode ? kDarkTextColorColor : kGrayColor),
@@ -100,14 +99,14 @@ class _CartBodyState extends State<CartBody> {
           CardWidget(
             childWidget: ListTile(
               title: Text(
-                ApplicationLocalizations.of(context).translate("total_price"),
+                ApplicationLocalizations.of(context)!.translate("total_price"),
                 style: TextStyle(
                     color: Utils.isDarkMode
                         ? kDarkBlackTextColor
                         : kLightBlackTextColor),
               ),
               trailing: Text(
-                "${totalpay + 12}\$",
+                "$totalpay \$",
                 style: TextStyle(color: kAppColor, fontSize: kPriceFontSize),
               ),
             ),
@@ -117,7 +116,7 @@ class _CartBodyState extends State<CartBody> {
             padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: TextWidget(
                 ApplicationLocalizations.of(context)
-                    .translate("select_address"),
+                  !  .translate("select_address"),
                 kAppColor),
           ),
           Row(
@@ -127,7 +126,7 @@ class _CartBodyState extends State<CartBody> {
                 dropDownButtonItems:
                     addressList.map((e) => e.addressName).toList(),
                 placeHolder: ApplicationLocalizations.of(context)
-                    .translate("select_address"),
+                   ! .translate("select_address"),
               ),
               CardWidget(
                   childWidget: InkWell(
@@ -138,7 +137,7 @@ class _CartBodyState extends State<CartBody> {
                   children: [
                     TextWidget(
                         ApplicationLocalizations.of(context)
-                            .translate("add_address"),
+                        !    .translate("add_address"),
                         Utils.isDarkMode
                             ? kDarkTextColorColor
                             : kLightBlackTextColor),
@@ -157,7 +156,7 @@ class _CartBodyState extends State<CartBody> {
           ),
           ButtonCustom(
             txt: ApplicationLocalizations.of(context)
-                .translate("select_credit_card"),
+               ! .translate("select_credit_card"),
             ontap: () {
               Navigator.of(context).pushNamed(SelectCreditCartScreen.routeName);
             },
@@ -341,7 +340,7 @@ class _CartBodyState extends State<CartBody> {
               color: Colors.white,
             ),
             Text(
-              ApplicationLocalizations.of(context).translate("delete"),
+              ApplicationLocalizations.of(context)!.translate("delete"),
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,

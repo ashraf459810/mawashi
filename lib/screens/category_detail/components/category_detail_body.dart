@@ -4,9 +4,9 @@ import 'package:dellyshop/screens/home/models/categories_response_model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryDetailBody extends StatefulWidget {
-  final List<Datum> categories;
+  final List<Datum> ?categories;
 
-  const CategoryDetailBody({Key key, this.categories}) : super(key: key);
+  const CategoryDetailBody({Key ?key, this.categories}) : super(key: key);
   @override
   _CategoryDetailBodyState createState() => _CategoryDetailBodyState();
 }
@@ -26,8 +26,8 @@ class _CategoryDetailBodyState extends State<CategoryDetailBody> {
                 delegate: SliverChildBuilderDelegate(
 
                     /// Calling itemCard Class for constructor card
-                    (context, index) => ItemCard(widget.categories[index]),
-                    childCount: widget.categories.length)),
+                    (context, index) => ItemCard(widget.categories![index]),
+                    childCount: widget.categories!.length)),
           ),
         ],
       ),
@@ -65,7 +65,7 @@ class ItemCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(0.0)),
                   image: DecorationImage(
-                      image:   NetworkImage(category.image)  , fit: BoxFit.fill),
+                      image:   NetworkImage(category.image!)  , fit: BoxFit.fill),
                 ),
                 child: Container(
                   decoration: BoxDecoration(
@@ -74,7 +74,7 @@ class ItemCard extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      category.name,
+                      category.name!,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35.0,

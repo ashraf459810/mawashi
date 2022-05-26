@@ -9,11 +9,12 @@ import 'package:flutter/material.dart';
 import '../../../constant.dart';
 
 import '../../../util.dart';
+import '../../brand_detail/brand_detail_screen.dart';
 
 class CateogryListBuilder extends StatefulWidget {
   final List<Datum>categories;
 
-  const CateogryListBuilder({Key key, this.categories}) : super(key: key);
+  const CateogryListBuilder({Key ?key,required this.categories}) : super(key: key);
   @override
   _CateogryListBuilderState createState() => _CateogryListBuilderState();
 }
@@ -38,11 +39,11 @@ class _CateogryListBuilderState extends State<CateogryListBuilder> {
                             : kDefaultBgColor,
                         child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                                  // context,
-                                  // MaterialPageRoute(
-                                  //     builder: (context) => BrandDetailScreen(
-                                  //         categories[index])));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BrandDetailScreen(category: 
+                                          widget.categories[index])));
                             },
                             child: CategoryListItemBuilder(widget.categories[index])),
                       ),

@@ -41,8 +41,8 @@ class _HomeBodyState extends State<HomeBody> {
         child: Column(
           children: [
             HeaderTitle(
-                ApplicationLocalizations.of(context).translate("categories"),
-                ApplicationLocalizations.of(context).translate("view_all"),
+                ApplicationLocalizations.of(context)!.translate("categories"),
+                ApplicationLocalizations.of(context)!.translate("view_all"),
                 Utils.isDarkMode ? kDarkBlackFontColor : kLightBlackTextColor,
                 () {
               Navigator.of(context).pushNamed(CategoryDetailScreen.routeName,arguments: categories);
@@ -89,28 +89,28 @@ class _HomeBodyState extends State<HomeBody> {
       
           }
           if (state is GetCategoriesState){
-            categories =state.categoriesResponseModel.data;
+            categories =state.categoriesResponseModel.data!;
           }
           return
             CateogryListBuilder(categories: categories);
         }),
             CarouselViewBuilder(),
             HeaderTitle(
-                ApplicationLocalizations.of(context).translate("best_seller"),
-                ApplicationLocalizations.of(context).translate("view_all"),
+                ApplicationLocalizations.of(context)!.translate("best_seller"),
+                ApplicationLocalizations.of(context)!.translate("view_all"),
                 Utils.isDarkMode ? kDarkBlackFontColor : kLightBlackTextColor,
                 () {
               Navigator.of(context).pushNamed(AllProductItemScreen.routeName);
             }),
             ItemListBuilder(),
             HeaderTitle(
-                ApplicationLocalizations.of(context).translate("newest"),
-                ApplicationLocalizations.of(context).translate("view_all"),
+                ApplicationLocalizations.of(context)!.translate("newest"),
+                ApplicationLocalizations.of(context)!.translate("view_all"),
                 Utils.isDarkMode ? kDarkBlackFontColor : kLightBlackTextColor,
-                () {
+                ()  {
               Navigator.of(context).pushNamed(AllProductItemScreen.routeName);
             }),
-            GridListBuilder(),
+            // GridListBuilder(),
           ],
         ),
       ),

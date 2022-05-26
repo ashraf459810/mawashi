@@ -1,4 +1,5 @@
 import 'package:dellyshop/models/product_item_model.dart';
+import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
 import 'package:dellyshop/screens/product_detail/product_detail_screen.dart';
 import 'package:dellyshop/widgets/shimmer_widger.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +14,11 @@ class ItemListBuilder extends StatefulWidget {
 }
 
 class _ItemListBuilderState extends State<ItemListBuilder> {
-  List<ProductItemModel> _productList;
+  
+  List<ProductItemModel> ?_productList;
   @override
   void initState() {
+          _productList = productList;
     super.initState();
     gerData();
   }
@@ -23,7 +26,7 @@ class _ItemListBuilderState extends State<ItemListBuilder> {
   gerData() async {
     await Future.delayed(Duration(seconds: 2));
     setState(() {
-      _productList = productList;
+
     });
   }
 
@@ -42,23 +45,23 @@ class _ItemListBuilderState extends State<ItemListBuilder> {
                     child: Material(
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProductDetailScreen(
-                                      _productList[index])));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => ProductDetailScreen(
+                          //             _productList![index])));
                         },
-                        child: FittedBox(
+                  child:  FittedBox(
                           child: ProductItemBuilder(
                             isDiscount: true,
-                            productItem: productList[index],
+                            productItem: Item(description: "test", image: "/cache/catalog/sheep/Goat/Somalian%20Goat-500x500.jpg",price: "100",name: "mobile",rating: 5)
                           ),
                         ),
                       ),
                     ),
                   );
                 },
-                itemCount: _productList.length,
+                itemCount: productList.length,
               )
             : ListView.builder(
                 scrollDirection: Axis.horizontal,

@@ -19,7 +19,7 @@ class CartScreen extends StatelessWidget {
               Utils.isDarkMode ? kDarkDefaultBgColor : kDefaultBgColor,
           centerTitle: true,
           title: PageTitle(
-              ApplicationLocalizations.of(context).translate("my_cart")),
+              ApplicationLocalizations.of(context)!.translate("my_cart")),
         ),
         body: CartBody());
   }

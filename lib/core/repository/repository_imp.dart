@@ -19,17 +19,17 @@ class RepositoryImp implements Repository{
 
   @override
   Future<Either<dynamic, dynamic>> getrequest(Function([String response]) model, String url) async {
-    try {
+    // try {
        var response = await httpHelper.getrequest(url);
     log(response);
     var decodeddata = model(response);
 
     return Right(decodeddata);}
-    catch(e){
+    // catch(e){
     
-      return Left(e);
-    }
-  }
+    //   return Left(e);
+    // }
+  // }
 
   @override
   Future<Either<dynamic, dynamic>> postrequest(Function([String response]) model, String url, [body]) async {

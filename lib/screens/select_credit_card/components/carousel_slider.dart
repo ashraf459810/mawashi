@@ -56,7 +56,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                       ),
                       Text(
                           ApplicationLocalizations.of(context)
-                              .translate("card_number"),
+                          !    .translate("card_number"),
                           style: TextStyle(fontSize: kMicroFontSize)),
                       Text(
                         i,
@@ -73,7 +73,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                             children: [
                               Text(
                                   ApplicationLocalizations.of(context)
-                                      .translate("expiration"),
+                             !         .translate("expiration"),
                                   style: TextStyle(fontSize: kMicroFontSize)),
                               Text("12/22",
                                   style:
@@ -85,7 +85,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                             children: [
                               Text(
                                   ApplicationLocalizations.of(context)
-                                      .translate("card_name"),
+                              !        .translate("card_name"),
                                   style: TextStyle(fontSize: kMicroFontSize)),
                               Text("William Stone",
                                   overflow: TextOverflow.clip,

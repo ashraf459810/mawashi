@@ -10,7 +10,7 @@ class LastViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: LastViewBody(),
-      title: ApplicationLocalizations.of(context).translate("last_view"),
+      title: ApplicationLocalizations.of(context)!.translate("last_view"),
     );
   }
 }

@@ -4,9 +4,9 @@ import '../repository/repository.dart';
 
 
 abstract class UseCase {
-  Future<Either<dynamic,dynamic> >getUsecase(String url, Function([String response]) model);
-   Future<Either<dynamic,dynamic> >patchUsecase(String url, Function([String response]) model , );
-    Future<Either<dynamic,dynamic> >postUsecase(String url, Function([String  response]) model , body);
+  Future<Either<dynamic,dynamic> >getUsecase(String url, Function([String ?response]) model);
+   Future<Either<dynamic,dynamic> >patchUsecase(String url, Function([String ?response]) model , );
+    Future<Either<dynamic,dynamic> >postUsecase(String url, Function([String  ?response]) model , body);
 }
 
 

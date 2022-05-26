@@ -7,6 +7,7 @@ import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../util.dart';
+import '../../brand_detail/models/category_items_response_model.dart';
 
 class SearchBody extends StatefulWidget {
   @override
@@ -17,17 +18,17 @@ class _SearchBodyState extends State<SearchBody> {
   @override
   Widget build(BuildContext context) {
     List<String> keys = [
-      ApplicationLocalizations.of(context).translate("iphonex"),
-      ApplicationLocalizations.of(context).translate("iphone11"),
-      ApplicationLocalizations.of(context).translate("books"),
-      ApplicationLocalizations.of(context).translate("macbooks"),
-      ApplicationLocalizations.of(context).translate("apple"),
-      ApplicationLocalizations.of(context).translate("samsung"),
-      ApplicationLocalizations.of(context).translate("cannon"),
-      ApplicationLocalizations.of(context).translate("navada"),
-      ApplicationLocalizations.of(context).translate("watch"),
-      ApplicationLocalizations.of(context).translate("note_nine"),
-      ApplicationLocalizations.of(context).translate("pc"),
+      ApplicationLocalizations.of(context)!.translate("iphonex"),
+      ApplicationLocalizations.of(context)!.translate("iphone11"),
+      ApplicationLocalizations.of(context)!.translate("books"),
+      ApplicationLocalizations.of(context)!.translate("macbooks"),
+      ApplicationLocalizations.of(context)!.translate("apple"),
+      ApplicationLocalizations.of(context)!.translate("samsung"),
+      ApplicationLocalizations.of(context)!.translate("cannon"),
+      ApplicationLocalizations.of(context)!.translate("navada"),
+      ApplicationLocalizations.of(context)!.translate("watch"),
+      ApplicationLocalizations.of(context)!.translate("note_nine"),
+      ApplicationLocalizations.of(context)!.translate("pc"),
     ];
     return Container(
       child: ListView(
@@ -66,7 +67,7 @@ class _SearchBodyState extends State<SearchBody> {
                             size: 28.0,
                           ),
                           hintText: ApplicationLocalizations.of(context)
-                              .translate("search"),
+                             ! .translate("search"),
                           hintStyle: TextStyle(
                               color: Utils.isDarkMode
                                   ? kDarkTextColorColor
@@ -84,7 +85,7 @@ class _SearchBodyState extends State<SearchBody> {
             ),
             child: Text(
               ApplicationLocalizations.of(context)
-                  .translate("popular_keywords"),
+                !  .translate("popular_keywords"),
               style: TextStyle(color: kGrayColor),
             ),
           ),
@@ -123,7 +124,7 @@ class _SearchBodyState extends State<SearchBody> {
               left: 15.0,
             ),
             child: Text(
-              ApplicationLocalizations.of(context).translate("favorite_items"),
+              ApplicationLocalizations.of(context)!.translate("favorite_items"),
               style: TextStyle(color: kGrayColor),
             ),
           ),
@@ -131,7 +132,7 @@ class _SearchBodyState extends State<SearchBody> {
             padding: const EdgeInsets.all(10.0),
             child: GridView.count(
               crossAxisCount: 2,
-              childAspectRatio: (140 / Utils.GridHeight()),
+              childAspectRatio: (140 / Utils.GridHeight()!.toDouble()),
               controller: new ScrollController(keepScrollOffset: false),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
@@ -142,15 +143,15 @@ class _SearchBodyState extends State<SearchBody> {
                     child: Material(
                       child: GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ProductDetailScreen(value)));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             ProductDetailScreen(value)));
                           },
                           child: FittedBox(
                             child: ProductItemBuilder(
-                                isDiscount: false, productItem: value),
+                                isDiscount: false, productItem: Item()),
                           )),
                     ),
                   );

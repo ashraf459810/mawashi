@@ -69,7 +69,7 @@ class _customBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     Utils.isDarkMode ? kDarkBottomIconColor : kBottomIconColor,
               ),
               label:
-                ApplicationLocalizations.of(context).translate("home"),
+                ApplicationLocalizations.of(context)!.translate("home"),
            
               ),
             
@@ -85,7 +85,7 @@ class _customBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       : kBottomIconColor,
                 ),
                 label:
-                  ApplicationLocalizations.of(context).translate("cart"),
+                  ApplicationLocalizations.of(context)!.translate("cart"),
            
                 ),
             BottomNavigationBarItem(
@@ -100,7 +100,7 @@ class _customBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     Utils.isDarkMode ? kDarkBottomIconColor : kBottomIconColor,
               ),
               label:
-                ApplicationLocalizations.of(context).translate("profile"),
+                ApplicationLocalizations.of(context)!.translate("profile"),
              
               
             ),

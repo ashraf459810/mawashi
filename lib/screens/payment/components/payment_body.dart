@@ -36,7 +36,7 @@ class _PaymentBodyState extends State<PaymentBody> {
             children: <Widget>[
               Text(
                 ApplicationLocalizations.of(context)
-                    .translate("choose_your_payment"),
+                    !.translate("choose_your_payment"),
                 style: TextStyle(
                   letterSpacing: 0.1,
                   fontWeight: FontWeight.w600,
@@ -76,7 +76,7 @@ class _PaymentBodyState extends State<PaymentBody> {
                       children: <Widget>[
                         Text(
                             ApplicationLocalizations.of(context)
-                                .translate("cash"),
+                               ! .translate("cash"),
                             style: _customStyle),
                         Padding(
                           padding: const EdgeInsets.only(right: 20.0),
@@ -118,7 +118,7 @@ class _PaymentBodyState extends State<PaymentBody> {
                       children: <Widget>[
                         Text(
                             ApplicationLocalizations.of(context)
-                                .translate("credit_card"),
+                           !    .translate("credit_card"),
                             style: _customStyle),
                         Padding(
                           padding: const EdgeInsets.only(right: 20.0),
@@ -160,7 +160,7 @@ class _PaymentBodyState extends State<PaymentBody> {
                       children: <Widget>[
                         Text(
                             ApplicationLocalizations.of(context)
-                                .translate("paypal"),
+                          !      .translate("paypal"),
                             style: _customStyle),
                         Padding(
                           padding: const EdgeInsets.only(right: 20.0),
@@ -202,7 +202,7 @@ class _PaymentBodyState extends State<PaymentBody> {
                       children: <Widget>[
                         Text(
                             ApplicationLocalizations.of(context)
-                                .translate("google_wallet"),
+                           !     .translate("google_wallet"),
                             style: _customStyle),
                         Padding(
                           padding: const EdgeInsets.only(right: 20.0),
@@ -218,7 +218,7 @@ class _PaymentBodyState extends State<PaymentBody> {
               ),
               Padding(padding: EdgeInsets.only(top: 60.0)),
               ButtonCustom(
-                txt: ApplicationLocalizations.of(context).translate("payment"),
+                txt: ApplicationLocalizations.of(context)!.translate("payment"),
                 ontap: () {
                   _showDialog(context);
                   StartTime();
@@ -281,7 +281,7 @@ class _PaymentBodyState extends State<PaymentBody> {
               child: Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: Text(
-              ApplicationLocalizations.of(context).translate("success"),
+              ApplicationLocalizations.of(context)!.translate("success"),
               style: _txtCustomHead,
             ),
           )),
@@ -289,7 +289,7 @@ class _PaymentBodyState extends State<PaymentBody> {
               child: Padding(
             padding: const EdgeInsets.only(top: 30.0, bottom: 40.0),
             child: Text(
-              ApplicationLocalizations.of(context).translate("success_message"),
+              ApplicationLocalizations.of(context)!.translate("success_message"),
               style: _txtCustomSub,
             ),
           )),

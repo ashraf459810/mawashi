@@ -3,17 +3,17 @@ import 'package:dellyshop/constant.dart';
 
 
 class MyFavoriteModel {
-  int id;
-  String productName;
-  String companyName;
-  String productImage;
-  int orderNo;
-  DateTime orderDate;
-  String orderStatus;
-  bool isSelect;
-  double price;
-  double itemHeight;
-  int arrowRotate;
+  int? id;
+  String? productName;
+  String ?companyName;
+  String ?productImage;
+  int? orderNo;
+  DateTime ?orderDate;
+  String? orderStatus;
+  bool ?isSelect;
+  double? price;
+  double? itemHeight;
+  int? arrowRotate;
 
   MyFavoriteModel(
       {this.id,

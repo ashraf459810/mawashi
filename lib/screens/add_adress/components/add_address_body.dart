@@ -22,20 +22,22 @@ class _AddAddressBodyState extends State<AddAddressBody> {
         children: [
           SizedBox(height: 20),
           CustomTextFromField(
+            onChanged: (){},
             height: 60.0,
             icon: Icons.location_city,
             ispassword: false,
             placeHolder:
-                ApplicationLocalizations.of(context).translate("address_title"),
+                ApplicationLocalizations.of(context)!.translate("address_title"),
             inputType: TextInputType.text,
           ),
           SizedBox(height: 20),
           CustomTextFromField(
+            onChanged: (){},
             height: 60.0,
             icon: Icons.pin_drop,
             ispassword: false,
             placeHolder:
-                ApplicationLocalizations.of(context).translate("pin_code"),
+                ApplicationLocalizations.of(context)!.translate("pin_code"),
             inputType:
                 TextInputType.numberWithOptions(signed: true, decimal: true),
           ),
@@ -44,26 +46,26 @@ class _AddAddressBodyState extends State<AddAddressBody> {
             dropDownButtonItems:
                 addressList.map((e) => e.selectCountry).toList(),
             placeHolder: ApplicationLocalizations.of(context)
-                .translate("select_country"),
+                !.translate("select_country"),
           ),
           SizedBox(height: 20),
           CustomDropDownButton(
             dropDownButtonItems: addressList.map((e) => e.selectCity).toList(),
             placeHolder:
-                ApplicationLocalizations.of(context).translate("select_city"),
+                ApplicationLocalizations.of(context)!.translate("select_city"),
           ),
           SizedBox(height: 20),
           CustomDropDownButton(
             dropDownButtonItems:
                 addressList.map((e) => e.selectStreet).toList(),
             placeHolder:
-                ApplicationLocalizations.of(context).translate("select_street"),
+                ApplicationLocalizations.of(context)!.translate("select_street"),
           ),
           SizedBox(
             height: 20,
           ),
           ButtonCustom(
-            txt: ApplicationLocalizations.of(context).translate("add_address"),
+            txt: ApplicationLocalizations.of(context)!.translate("add_address"),
             ontap: () {
               Navigator.of(context).pop();
             },

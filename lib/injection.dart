@@ -2,6 +2,7 @@
 
 import 'package:dellyshop/core/network/http_helper.dart';
 import 'package:dellyshop/core/network/http_helper_imp.dart';
+import 'package:dellyshop/screens/brand_detail/bloc/items_bloc.dart';
 import 'package:dellyshop/screens/home/bloc/homepage_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
@@ -21,6 +22,11 @@ Future iniGetIt() async {
      sl.registerFactory(
     () => HomepageBloc(sl(),
      
+    ),
+  );
+     sl.registerFactory(
+    () => ItemsBloc(sl(),
+     sl()
     ),
   );
 

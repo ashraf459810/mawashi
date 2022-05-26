@@ -33,7 +33,7 @@ class _NotificationBodyState extends State<NotificationBody> {
             flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: Text(
-                  widget._notificationModel.title,
+                  widget._notificationModel.title!,
                   style: TextStyle(
                       color: kAppColor,
                       fontSize: 17.0,
@@ -48,7 +48,7 @@ class _NotificationBodyState extends State<NotificationBody> {
                           image: new DecorationImage(
                             fit: BoxFit.cover,
                             image:
-                                new AssetImage(widget._notificationModel.image),
+                                new AssetImage(widget._notificationModel.image!),
                           ),
                           shape: BoxShape.rectangle,
                         ),
@@ -93,7 +93,7 @@ class _NotificationBodyState extends State<NotificationBody> {
                             padding: const EdgeInsets.only(
                                 top: 30.0, left: 20.0, right: 20.0),
                             child: Text(
-                              widget._notificationModel.description,
+                              widget._notificationModel.description!,
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 15.0,
@@ -120,7 +120,7 @@ class _NotificationBodyState extends State<NotificationBody> {
                             padding: const EdgeInsets.only(
                                 top: 30.0, left: 20.0, right: 20.0),
                             child: Text(
-                              widget._notificationModel.description,
+                              widget._notificationModel.description!,
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 15.0,

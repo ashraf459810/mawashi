@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/models/my_comment_model.dart';
 import 'package:dellyshop/models/product_item_model.dart';
+import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
+import 'package:dellyshop/screens/brand_detail/models/item_response_model.dart';
 import 'package:dellyshop/screens/home/components/header_title.dart';
 import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:dellyshop/widgets/carousel_pro.dart';
@@ -9,36 +13,59 @@ import 'package:dellyshop/widgets/custom_radio_button.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/normal_text.dart';
 import 'package:dellyshop/widgets/star_display.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:jiffy/jiffy.dart';
 
 import '../../../app_localizations.dart';
 import '../../../util.dart';
 
 class ProductDetailBody extends StatefulWidget {
-  ProductItemModel productItemModel;
+  
+  final ItemResponseModel item;
   int _value = 1;
-  List<Color> colors = [
-    Colors.redAccent,
-    Colors.green,
-    Colors.blue,
-    Colors.purple
-  ];
-  ProductDetailBody(this.productItemModel);
+
+  ProductDetailBody( this.item);
 
   @override
   _ProductDetailBodyState createState() => _ProductDetailBodyState();
 }
 
 class _ProductDetailBodyState extends State<ProductDetailBody> {
+  late  String desc ;
+
+  List<MyCommentModel> myCommentList = [
+  MyCommentModel(
+    id: 1,
+    productName: "iPhone 11 Pro 64 GB",
+    companyName: "Apple",
+    productImage: kiPhoneImg,
+    range: 3,
+    commentDate: DateTime.now(),
+    userName: "Ufuk Zimmerman",
+    userComment:
+        "Good quality and beautiful product. The cargo arrived later than expected.",
+    isSelect: false,
+    price: 949.99,
+  ),
+
+];
+
   static var _subHeaderCustomStyle = TextStyle(
       color: kAppColor,
       fontWeight: FontWeight.w700,
       fontSize: kSubTitleFontSize);
 
+      @override
+  void initState() {
+      desc = widget.item.data!.description!;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+   
     var size = MediaQuery.of(context).size;
     return ListView(
       children: [
@@ -66,10 +93,10 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
               SizedBox(
                 height: 2.0,
               ),
-              NormalTextWidget(
-                  widget.productItemModel.company,
-                  Utils.isDarkMode ? kDarkTextColorColor : kTextColorColor,
-                  kTitleFontSize),
+              // NormalTextWidget(
+              //     widget.productItemModel.company!,
+              //     Utils.isDarkMode ? kDarkTextColorColor : kTextColorColor,
+              //     kTitleFontSize),
               SizedBox(
                 height: 10,
               ),
@@ -77,35 +104,35 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
               SizedBox(
                 height: 10,
               ),
-              Visibility(
-                visible: widget.productItemModel.sizable,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text("Size", style: _subHeaderCustomStyle),
-                    Row(
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.only(right: 5.0)),
-                        RadioButtonCustom(
-                          txt: "S",
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 5.0)),
-                        RadioButtonCustom(
-                          txt: "M",
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 5.0)),
-                        RadioButtonCustom(
-                          txt: "L",
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 5.0)),
-                        RadioButtonCustom(
-                          txt: "XL",
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              // Visibility(
+              //   visible: widget.productItemModel.sizable!,
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: <Widget>[
+              //       Text("Size", style: _subHeaderCustomStyle),
+              //       Row(
+              //         children: <Widget>[
+              //           Padding(padding: EdgeInsets.only(right: 5.0)),
+              //           RadioButtonCustom(
+              //             txt: "S",
+              //           ),
+              //           Padding(padding: EdgeInsets.only(left: 5.0)),
+              //           RadioButtonCustom(
+              //             txt: "M",
+              //           ),
+              //           Padding(padding: EdgeInsets.only(left: 5.0)),
+              //           RadioButtonCustom(
+              //             txt: "L",
+              //           ),
+              //           Padding(padding: EdgeInsets.only(left: 5.0)),
+              //           RadioButtonCustom(
+              //             txt: "XL",
+              //           ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
               SizedBox(
                 height: 10,
               ),
@@ -115,8 +142,8 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
               ),
               addToCart(size),
               HeaderTitle(
-                  ApplicationLocalizations.of(context).translate("comments"),
-                  ApplicationLocalizations.of(context).translate("view_all"),
+                  ApplicationLocalizations.of(context)!.translate("comments"),
+                  ApplicationLocalizations.of(context)!.translate("view_all"),
                   kAppColor, () {
                 _commentBottomSheet();
               }),
@@ -139,12 +166,12 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 10.0),
-                              child: StarDisplay(value: myCommentList[i].range),
+                              child: StarDisplay(value: myCommentList[i].range!),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                NormalTextWidget(myCommentList[i].userName,
+                                NormalTextWidget(myCommentList[i].userName!,
                                     kAppColor, kTitleFontSize),
                                 NormalTextWidget(
                                     Jiffy(myCommentList[i].commentDate).yMMMd,
@@ -158,7 +185,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                               height: 10,
                             ),
                             Text(
-                              myCommentList[i].userComment,
+                              myCommentList[i].userComment!,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: TextStyle(
@@ -185,7 +212,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
   Center addToCart(Size size) {
     return Center(
       child: ButtonCustom(
-        txt: ApplicationLocalizations.of(context).translate("add_to_cart"),
+        txt: ApplicationLocalizations.of(context)!.translate("add_to_cart"),
         witdh: size.width,
         ontap: () {},
         bacgroudColor: kAppColor,
@@ -199,25 +226,18 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
       width: size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Text(
-            ApplicationLocalizations.of(context).translate("description"),
+            ApplicationLocalizations.of(context)!.translate("description"),
             style: TextStyle(
                 color: kAppColor,
                 fontWeight: FontWeight.w700,
                 fontSize: kTitleFontSize),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(ApplicationLocalizations.of(context).translate("lorem"),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 7,
-              style: TextStyle(
-                  color: Utils.isDarkMode
-                      ? kDarkBlackTextColor
-                      : kLightBlackTextColor,
-                  fontSize: kSubTitleFontSize)),
+      
+  Html(
+    data:desc),
           SizedBox(
             height: 10,
           ),
@@ -227,7 +247,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                 _bottomSheet();
               },
               child: Text(
-                ApplicationLocalizations.of(context).translate("view_more"),
+                ApplicationLocalizations.of(context)!.translate("view_more"),
                 style: TextStyle(
                   color: kAppColor,
                   fontSize: 15.0,
@@ -244,21 +264,21 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
   Row colorAndAmount(Size size) {
     return Row(
       children: [
-        Visibility(
-          visible: widget.productItemModel.colorable,
-          child: SizedBox(
-            height: 40,
-            width: size.width / 2,
-            child: ListView.builder(
-                itemCount: widget.colors.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (c, i) {
-                  return Center(
-                    child: RadioButtonColor(widget.colors[i]),
-                  );
-                }),
-          ),
-        ),
+        // Visibility(
+        //   visible: widget.item.colorable!,
+        //   child: SizedBox(
+        //     height: 40,
+        //     width: size.width / 2,
+        //     child: ListView.builder(
+        //         itemCount: widget.colors.length,
+        //         scrollDirection: Axis.horizontal,
+        //         itemBuilder: (c, i) {
+        //           return Center(
+        //             child: RadioButtonColor(widget.colors[i]),
+        //           );
+        //         }),
+        //   ),
+        // ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
@@ -342,7 +362,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
         Container(
           width: MediaQuery.of(context).size.width / 2,
           child: NormalTextWidget(
-              widget.productItemModel.title,
+              widget.item.data!.name!,
               Utils.isDarkMode ? kDarkBlackTextColor : kLightBlackTextColor,
               kNormalFontSize),
         ),
@@ -350,7 +370,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.productItemModel.normalPrice,
+              widget.item.data!.price!,
               style: TextStyle(
                   decoration: TextDecoration.lineThrough,
                   color: Utils.isDarkMode
@@ -358,7 +378,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                       : kLightBlackTextColor,
                   fontSize: kSubTitleFontSize),
             ),
-            NormalTextWidget(widget.productItemModel.discountPrice, kAppColor,
+            NormalTextWidget(widget.item.data!.price!, kAppColor,
                 kLargeFontSize),
           ],
         ),
@@ -386,7 +406,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      widget.productItemModel.ratingValue,
+                      widget.item.data!.rating.toString(),
                       style: TextStyle(color: Colors.white),
                     ),
                     Padding(padding: EdgeInsets.only(left: 8.0)),
@@ -403,7 +423,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
           Padding(
             padding: const EdgeInsets.only(right: 15.0),
             child: Text(
-              "${widget.productItemModel.sale} ${ApplicationLocalizations.of(context).translate("sale")}",
+              "${widget.item.data!.points} ${ApplicationLocalizations.of(context)!.translate("sale")}",
               style: TextStyle(
                   color:
                       Utils.isDarkMode ? kDarkTextColorColor : kTextColorColor,
@@ -420,18 +440,20 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
     return Container(
       height: 300.0,
       child: Hero(
-        tag: "hero-Item-${widget.productItemModel.id}",
-        child: new Carousel(
+        tag: "hero-Item-${widget.item.data!.productId.toString()}",
+        child:  Carousel(
           dotColor: Colors.black26,
           dotIncreaseSize: 1.7,
           dotBgColor: Colors.transparent,
           autoplay: false,
-          boxFit: BoxFit.fitHeight,
-          images: [
-            AssetImage(widget.productItemModel.image),
-            AssetImage(widget.productItemModel.image),
-            AssetImage(widget.productItemModel.image),
-          ],
+          boxFit: BoxFit.fill,
+          images: 
+       widget.item.data!.images!.map((e) {
+          var w = NetworkImage(e,);
+         
+          return w;
+        }).toList()
+          , overlayShadowColors: Colors.transparent, radius: Radius.zero, radiusDouble: 0,
         ),
       ),
     );
@@ -460,20 +482,12 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: Text(
                           ApplicationLocalizations.of(context)
-                              .translate("description"),
+                             ! .translate("description"),
                           style: TextStyle(
                               color: kAppColor, fontSize: kTitleFontSize),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20.0, left: 20.0, right: 20.0, bottom: 0.0),
-                        child: Text(widget.productItemModel.description,
-                            style: TextStyle(
-                                color: Utils.isDarkMode
-                                    ? kDarkBlackTextColor
-                                    : kLightBlackTextColor)),
-                      ),
+                      Html(data: desc),
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
@@ -484,31 +498,31 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: Text(
-                                    ApplicationLocalizations.of(context)
-                                        .translate("product_detail"),
-                                    style: TextStyle(
-                                        color: kAppColor,
-                                        fontSize: kTitleFontSize),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 10.0,
-                                      right: 20.0,
-                                      bottom: 10.0,
-                                      left: 20.0),
-                                  child: Text(
-                                    widget.productItemModel.detailProduct,
-                                    style: TextStyle(
-                                        color: Utils.isDarkMode
-                                            ? kDarkBlackTextColor
-                                            : kLightBlackTextColor),
-                                    textDirection: TextDirection.ltr,
-                                  ),
-                                ),
+                                // Padding(
+                                //   padding: const EdgeInsets.only(left: 20.0),
+                                //   child: Text(
+                                //     ApplicationLocalizations.of(context)
+                                //         !.translate("product_detail"),
+                                //     style: TextStyle(
+                                //         color: kAppColor,
+                                //         fontSize: kTitleFontSize),
+                                //   ),
+                                // ),
+                                // Padding(
+                                //   padding: const EdgeInsets.only(
+                                //       top: 10.0,
+                                //       right: 20.0,
+                                //       bottom: 10.0,
+                                //       left: 20.0),
+                                //   child: Text(
+                                //     widget.item.data!.dateAvailable.toString(),
+                                //     style: TextStyle(
+                                //         color: Utils.isDarkMode
+                                //             ? kDarkBlackTextColor
+                                //             : kLightBlackTextColor),
+                                //     textDirection: TextDirection.ltr,
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
@@ -554,13 +568,13 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 10.0),
                                   child: StarDisplay(
-                                      value: myCommentList[i].range),
+                                      value: myCommentList[i].range!),
                                 ),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    NormalTextWidget(myCommentList[i].userName,
+                                    NormalTextWidget(myCommentList[i].userName!,
                                         kAppColor, kTitleFontSize),
                                     NormalTextWidget(
                                         Jiffy(myCommentList[i].commentDate)
@@ -575,7 +589,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                                   height: 10,
                                 ),
                                 Text(
-                                  myCommentList[i].userComment,
+                                  myCommentList[i].userComment!,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
                                   style: TextStyle(

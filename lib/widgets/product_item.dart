@@ -6,7 +6,7 @@ import '../util.dart';
 import 'card_widget.dart';
 
 class ProductItem extends StatefulWidget {
-  ProductItemModel productItem;
+  ProductItemModel ?productItem;
   ProductItem({this.productItem});
   @override
   _ProductItemState createState() => _ProductItemState();
@@ -18,7 +18,7 @@ class _ProductItemState extends State<ProductItem> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Hero(
-        tag: "hero-Item-${widget.productItem.id}",
+        tag: "hero-Item-${widget.productItem!.id}",
         child: Material(
           child: CardWidget(
             height: 100,
@@ -32,7 +32,7 @@ class _ProductItemState extends State<ProductItem> {
                       borderRadius: BorderRadius.circular(10.0),
                       image: DecorationImage(
                         fit: BoxFit.fitHeight,
-                        image: AssetImage(widget.productItem.image),
+                        image: AssetImage(widget.productItem!.image!),
                       )),
                 ),
                 Expanded(
@@ -40,14 +40,14 @@ class _ProductItemState extends State<ProductItem> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(widget.productItem.title,
+                      Text(widget.productItem!.title!,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Utils.isDarkMode
                                   ? kDarkTextColorColor
                                   : kLightBlackTextColor,
                               fontSize: kTitleFontSize)),
-                      Text(widget.productItem.company,
+                      Text(widget.productItem!.company!,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: kGrayColor, fontSize: kSmallFontSize)),
@@ -55,7 +55,7 @@ class _ProductItemState extends State<ProductItem> {
                         height: 10,
                       ),
                       Text(
-                        widget.productItem.normalPrice,
+                        widget.productItem!.normalPrice!,
                         style: TextStyle(
                             color: kAppColor, fontSize: kPriceFontSize),
                       ),

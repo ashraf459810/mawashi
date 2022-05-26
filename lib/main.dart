@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
+
 import 'delegates/app_localizations_delegate.dart';
 import 'injection.dart';
 
@@ -26,20 +28,18 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return
-    
-     AppBuilder(
-      builder: (context) {
+
      return    ScreenUtilInit(
             designSize: Size(375, 812),
-            builder: () => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          routes: routes,
-          theme: theme(),
+            builder:(context,child)=>
+             MaterialApp(
+         routes: routes,
+                    theme: theme(),
           supportedLocales: [
             Locale('en', 'US'),
             Locale('ar', ''),
           ],
+
           locale: Utils.appLocale,
           localizationsDelegates: [
             const AppLocalizationsDelegate(),
@@ -50,7 +50,7 @@ class _MainAppState extends State<MainApp> {
           localeResolutionCallback: (locale, supportedLocales) {
             for (var supportedLocaleLanguage in supportedLocales) {
               print(supportedLocaleLanguage.languageCode);
-              if (supportedLocaleLanguage.languageCode == locale.languageCode &&
+              if (supportedLocaleLanguage.languageCode == locale!.languageCode &&
                   supportedLocaleLanguage.countryCode == locale.countryCode) {
                 return supportedLocaleLanguage;
               }
@@ -60,8 +60,10 @@ class _MainAppState extends State<MainApp> {
           },
           title: 'Delly Shop',
           initialRoute: LoginScreen.routeName,
+          home: LoginScreen(),
+          
            )
       
-    );}  );
+   ) ;}  
   }
-}
+

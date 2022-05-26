@@ -11,7 +11,7 @@ class AddAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: ApplicationLocalizations.of(context).translate("add_address"),
+      title: ApplicationLocalizations.of(context)!.translate("add_address"),
       body: AddAddressBody(),
     );
   }

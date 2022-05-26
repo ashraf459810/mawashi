@@ -5,7 +5,7 @@ import '../constant.dart';
 import '../util.dart';
 
 class ShimmerWidget extends StatefulWidget {
-  Widget child;
+  Widget ?child;
 
   ShimmerWidget({this.child});
 
@@ -17,7 +17,7 @@ class _ShimmerWidgetState extends State<ShimmerWidget> {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      child: widget.child,
+      child: widget.child!,
       baseColor:
           Utils.isDarkMode ? kDarkBLackBgColor : Colors.grey.withOpacity(0.7),
       highlightColor:

@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
               Utils.isDarkMode ? kDarkDefaultBgColor : kDefaultBgColor,
           centerTitle: true,
           title: PageTitle(
-              ApplicationLocalizations.of(context).translate("my_profile")),
+              ApplicationLocalizations.of(context)!.translate("my_profile")),
         ),
         body: ProfileBody());
   }

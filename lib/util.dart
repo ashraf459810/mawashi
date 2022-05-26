@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class Utils {
-  static double totalPrice;
+  static double ? totalPrice;
 
-  static double GridHeight() {
+  static double ? GridHeight() {
     if (Platform.isIOS)
       return 260;
     else if (Platform.isAndroid) return 250;

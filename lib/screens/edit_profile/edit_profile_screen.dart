@@ -9,7 +9,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: ApplicationLocalizations.of(context).translate("edit_profile"),
+      title: ApplicationLocalizations.of(context)!.translate("edit_profile"),
       body: EditProfileBody(),
     );
   }

@@ -9,7 +9,7 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: ApplicationLocalizations.of(context).translate("payment"),
+      title: ApplicationLocalizations.of(context)!.translate("payment"),
       body: PaymentBody(),
     );
   }

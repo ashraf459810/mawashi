@@ -20,11 +20,11 @@ class _LstViewBodyState extends State<LastViewBody> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ProductDetailScreen(productList[index])));
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) =>
+              //             ProductDetailScreen(productList[index])));
             },
             child: ProductItem(
               productItem: productList[index],

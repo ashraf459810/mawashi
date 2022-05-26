@@ -82,7 +82,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                             ),
                             NormalTextWidget(
                                 ApplicationLocalizations.of(context)
-                                    .translate("edit_profile"),
+                                 !   .translate("edit_profile"),
                                 Utils.isDarkMode
                                     ? kDarkTextColorColor
                                     : kBlackFontColor,
@@ -99,7 +99,7 @@ class _ProfileBodyState extends State<ProfileBody> {
           SizedBox(
             height: 10.0,
           ),
-          buildCard(ApplicationLocalizations.of(context).translate("last_view"),
+          buildCard(ApplicationLocalizations.of(context)!.translate("last_view"),
               Icons.access_time, () {
             Navigator.of(context).pushNamed(LastViewScreen.routeName);
           }),
@@ -107,14 +107,14 @@ class _ProfileBodyState extends State<ProfileBody> {
             height: 10.0,
           ),
           buildCard(
-              ApplicationLocalizations.of(context).translate("my_favorite"),
+              ApplicationLocalizations.of(context)!.translate("my_favorite"),
               Icons.favorite, () {
             Navigator.of(context).pushNamed(MyFavoriteScreen.routeName);
           }),
           SizedBox(
             height: 10.0,
           ),
-          buildCard(ApplicationLocalizations.of(context).translate("my_orders"),
+          buildCard(ApplicationLocalizations.of(context)!.translate("my_orders"),
               Icons.indeterminate_check_box, () {
             Navigator.of(context).pushNamed(MyOdersScreen.routeName);
           }),
@@ -122,7 +122,7 @@ class _ProfileBodyState extends State<ProfileBody> {
             height: 10.0,
           ),
           buildCard(
-              ApplicationLocalizations.of(context).translate("my_comments"),
+              ApplicationLocalizations.of(context)!.translate("my_comments"),
               Icons.comment, () {
             Navigator.of(context).pushNamed(MyCommentScreen.routeName);
           }),
@@ -130,14 +130,14 @@ class _ProfileBodyState extends State<ProfileBody> {
             height: 10.0,
           ),
           buildCard(
-              ApplicationLocalizations.of(context).translate("notifications"),
+              ApplicationLocalizations.of(context)!.translate("notifications"),
               Icons.notifications, () {
             Navigator.of(context).pushNamed(NotificationScreen.routeName);
           }),
           SizedBox(
             height: 10.0,
           ),
-          buildCard(ApplicationLocalizations.of(context).translate("settings"),
+          buildCard(ApplicationLocalizations.of(context)!.translate("settings"),
               Icons.settings, () {
             Navigator.of(context).pushNamed(SettingsPage.routeName);
           }),

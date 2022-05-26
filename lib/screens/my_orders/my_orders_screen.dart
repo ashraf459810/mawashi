@@ -10,7 +10,7 @@ class MyOdersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: MyOrdersBody(),
-      title: ApplicationLocalizations.of(context).translate("my_orders"),
+      title: ApplicationLocalizations.of(context)!.translate("my_orders"),
     );
   }
 }

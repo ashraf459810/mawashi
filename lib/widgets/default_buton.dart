@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 class ButtonCustom extends StatelessWidget {
   @override
-  String txt;
-  Color bacgroudColor;
-  Color textColor;
+  String ?txt;
+  Color ?bacgroudColor;
+  Color? textColor;
   Color borderColor;
   double witdh;
   double height;
-  GestureTapCallback ontap;
+  GestureTapCallback? ontap;
   ButtonCustom(
       {this.txt,
       this.ontap,
@@ -33,7 +33,7 @@ class ButtonCustom extends StatelessWidget {
                   side: BorderSide(color: borderColor)),
               onPressed: ontap,
               child: Text(
-                txt,
+                txt!,
                 style: TextStyle(color: textColor, fontSize: kSubTitleFontSize),
               )),
         );

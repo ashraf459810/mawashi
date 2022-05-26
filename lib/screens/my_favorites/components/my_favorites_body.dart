@@ -8,10 +8,11 @@ import '../../../constant.dart';
 import '../../../util.dart';
 
 class MyFavoritesBody extends StatefulWidget {
-  var favList = new List<ProductItemModel>();
+  // ignore: deprecated_member_use
+  var favList =  <ProductItemModel>[];
   double itemHeight = 120;
-  double totalListHeight;
-  int index;
+  double ?totalListHeight;
+ late int index;
 
   @override
   _MyFavoritesBodyState createState() => _MyFavoritesBodyState();
@@ -39,11 +40,11 @@ class _MyFavoritesBodyState extends State<MyFavoritesBody> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            ProductDetailScreen(widget.favList[index])));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) =>
+                //             ProductDetailScreen(widget.favList[index])));
               },
               child: Dismissible(
                 onDismissed: (val) {
@@ -75,7 +76,7 @@ class _MyFavoritesBodyState extends State<MyFavoritesBody> {
                                   image: DecorationImage(
                                     fit: BoxFit.fitHeight,
                                     image:
-                                        AssetImage(widget.favList[index].image),
+                                        AssetImage(widget.favList[index].image!),
                                   )),
                             ),
                             Expanded(
@@ -83,14 +84,14 @@ class _MyFavoritesBodyState extends State<MyFavoritesBody> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(widget.favList[index].title,
+                                  Text(widget.favList[index].title!,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: Utils.isDarkMode
                                               ? kDarkTextColorColor
                                               : kLightBlackTextColor,
                                           fontSize: kTitleFontSize)),
-                                  Text(widget.favList[index].company,
+                                  Text(widget.favList[index].company!,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           color: kGrayColor,
@@ -99,7 +100,7 @@ class _MyFavoritesBodyState extends State<MyFavoritesBody> {
                                     height: 10,
                                   ),
                                   Text(
-                                    widget.favList[index].normalPrice,
+                                    widget.favList[index].normalPrice!,
                                     style: TextStyle(
                                         color: kAppColor,
                                         fontSize: kPriceFontSize),
@@ -140,7 +141,7 @@ class _MyFavoritesBodyState extends State<MyFavoritesBody> {
               color: Colors.white,
             ),
             Text(
-              " ${ApplicationLocalizations.of(context).translate("un_fav")}",
+              " ${ApplicationLocalizations.of(context)!.translate("un_fav")}",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -169,7 +170,7 @@ class _MyFavoritesBodyState extends State<MyFavoritesBody> {
               color: Colors.white,
             ),
             Text(
-              " ${ApplicationLocalizations.of(context).translate("un_fav")}",
+              " ${ApplicationLocalizations.of(context)!.translate("un_fav")}",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -188,7 +189,7 @@ class _MyFavoritesBodyState extends State<MyFavoritesBody> {
 
   Future<void> createList() async {
     productList.forEach((element) async {
-      await widget.favList.add(element);
+      widget.favList.add(element);
     });
   }
 }

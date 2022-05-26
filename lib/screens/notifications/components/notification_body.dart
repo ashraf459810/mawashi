@@ -41,13 +41,13 @@ class _NotificationBodyState extends State<NotificationBody> {
           height: 80.0,
           childWidget: ListTile(
             title: NormalTextWidget(
-                notifList[i].title,
+                notifList[i].title!,
                 Utils.isDarkMode ? kDarkBlackTextColor : kBlackFontColor,
                 kTitleFontSize),
             subtitle: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: Text(
-                notifList[i].description,
+                notifList[i].description!,
                 maxLines: 2,
                 style: TextStyle(
                     color: Utils.isDarkMode
@@ -67,7 +67,7 @@ class _NotificationBodyState extends State<NotificationBody> {
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: AssetImage(
-                        notifList[i].image,
+                        notifList[i].image!,
                       ),
                     )),
               ),

@@ -9,7 +9,7 @@ class CarouselViewBuilder extends StatefulWidget {
 }
 
 class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
-  List<dynamic> _assetImages;
+  List<dynamic> ?_assetImages;
   List<dynamic> assetImages = [
     AssetImage("assets/images/category_shoes.jpg"),
     AssetImage("assets/images/category_camera.jpeg"),
@@ -38,6 +38,7 @@ class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
       height: 182.0,
       child: _assetImages != null
           ? new Carousel(
+             overlayShadowColors: Colors.transparent,
               borderRadius: true,
               boxFit: BoxFit.cover,
               radiusDouble: 10,
@@ -49,7 +50,7 @@ class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
               showIndicator: true,
               overlayShadow: true,
               overlayShadowSize: 0.9,
-              images: _assetImages)
+              images: _assetImages!)
           : ShimmerWidget(
               child: Container(
                 decoration: BoxDecoration(

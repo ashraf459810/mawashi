@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 2.0),
                           child: Text(
                             ApplicationLocalizations.of(context)
-                                .translate("delly_shop_desc"),
+                                !.translate("delly_shop_desc"),
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: kLightBlackTextColor,
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         NormalTextWidget(
                             ApplicationLocalizations.of(context)
-                                .translate("search"),
+                               ! .translate("search"),
                             Utils.isDarkMode
                                 ? kDarkTextColorColor
                                 : kLightBlackTextColor,

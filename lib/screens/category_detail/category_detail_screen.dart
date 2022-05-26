@@ -8,10 +8,10 @@ class CategoryDetailScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context).settings.arguments ;
+    dynamic args = ModalRoute.of(context)!.settings.arguments ;
     return CustomScaffold(
-      title: ApplicationLocalizations.of(context).translate("categories"),
-      body: CategoryDetailBody(categories: args,),
+      title: ApplicationLocalizations.of(context)!.translate("categories"),
+      body: CategoryDetailBody(categories : args,),
     );
   }
 }
