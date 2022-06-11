@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 //Listh Colors
-const kPrimaryColor = Color.fromARGB(255, 5, 117, 54);
+const kPrimaryColor =  Color(0xFF00A99D);
 const kPrimaryLightColor = Color.fromARGB(255, 0, 70, 28);
 const kWhiteColor = Color(0xFFFFFFFF);
 const kButtonColor = Color(0xFF7292E5);
@@ -40,7 +40,7 @@ const kNormalFontSize = 20.0;
 const kTitleFontSize = 18.0;
 const kSmallFontSize = 15.0;
 const kMicroFontSize = 10.0;
-const kSubTitleFontSize = 16.0;
+const kSubTitleFontSize =20.0;
 const kLargeFontSize = 30.0;
 const kPriceFontSize = 25.0;
 //

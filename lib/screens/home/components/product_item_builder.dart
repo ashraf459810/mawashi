@@ -1,5 +1,4 @@
 import 'package:dellyshop/constant.dart';
-import 'package:dellyshop/models/product_item_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app_localizations.dart';

@@ -1,4 +1,4 @@
-import 'package:dellyshop/constant.dart';
+
 import 'package:flutter/material.dart';
 
 class NormalTextWidget extends StatefulWidget {

@@ -1,10 +1,11 @@
 import 'package:dellyshop/routes.dart';
 
-import 'package:dellyshop/screens/login/login_screen.dart';
+
+import 'package:dellyshop/screens/splash/splash_screen.dart';
 
 import 'package:dellyshop/theme.dart';
 import 'package:dellyshop/util.dart';
-import 'package:dellyshop/widgets/app_builder.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,8 +60,8 @@ class _MainAppState extends State<MainApp> {
             return supportedLocales.first;
           },
           title: 'Delly Shop',
-          initialRoute: LoginScreen.routeName,
-          home: LoginScreen(),
+          initialRoute: SplashScreen.routeName,
+          home: SplashScreen(),
           
            )
       

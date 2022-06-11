@@ -22,3 +22,9 @@ class Error extends HomepageState {
 
   Error(this.error);
 }
+
+class GetTopRatingItemsState extends HomepageState{
+  final TopRatingResponseModel topRatingResponseModel;
+
+  GetTopRatingItemsState(this.topRatingResponseModel);
+}

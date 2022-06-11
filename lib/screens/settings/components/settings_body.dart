@@ -4,17 +4,15 @@ import 'package:dellyshop/models/address_model.dart';
 import 'package:dellyshop/models/language.dart';
 import 'package:dellyshop/screens/add_adress/add_address_screen.dart';
 import 'package:dellyshop/screens/edit_address/edit_address_screen.dart';
-import 'package:dellyshop/screens/home/home_screen.dart';
-import 'package:dellyshop/screens/progfile/porile_screen.dart';
-import 'package:dellyshop/screens/settings/settings_screen.dart';
+
 import 'package:dellyshop/screens/splash/splash_screen.dart';
 import 'package:dellyshop/widgets/app_builder.dart';
-import 'package:dellyshop/widgets/bottom_navigation_bar.dart';
+
 import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/default_texfromfield.dart';
 import 'package:dellyshop/widgets/normal_text.dart';
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../../util.dart';

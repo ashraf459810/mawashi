@@ -1,12 +1,12 @@
 import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/core/const/const.dart';
-import 'package:dellyshop/models/product_item_model.dart';
+
 import 'package:dellyshop/screens/brand_detail/bloc/items_bloc.dart';
-import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
+
 import 'package:dellyshop/screens/brand_detail/models/item_response_model.dart';
 import 'package:dellyshop/screens/cart/cart_screen.dart';
 import 'package:dellyshop/screens/product_detail/components/product_detail_body.dart';
-import 'package:dellyshop/widgets/custom_scaffold.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -25,7 +25,7 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  ItemResponseModel item  = ItemResponseModel();
+  ItemResponseModel ?item  ;
   ItemsBloc itemsBloc = sl<ItemsBloc>();
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 item = state.item;
           }
           if (state is Loading){
-            return Center(child: CircularProgressIndicator(color: AppColor.blue,backgroundColor: Colors.white,));
+            return Scaffold(body: Center(child: CircularProgressIndicator(color: AppColor.blue,backgroundColor: Colors.white,)));
           }
         return Scaffold(
             backgroundColor:
@@ -95,7 +95,8 @@ item = state.item;
                 ),
               ],
             ),
-            body: ProductDetailBody(item));
+            body:  item !=null? ProductDetailBody(item!):SizedBox()
+            );
       },
     );
   }

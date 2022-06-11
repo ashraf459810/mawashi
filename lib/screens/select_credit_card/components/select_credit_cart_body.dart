@@ -1,15 +1,14 @@
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:dellyshop/app_localizations.dart';
-import 'package:dellyshop/screens/add_adress/add_address_screen.dart';
+
 import 'package:dellyshop/screens/add_credit_card/add_credit_cart_screen.dart';
 import 'package:dellyshop/screens/payment/payment_screen.dart';
 import 'package:dellyshop/util.dart';
 import 'package:dellyshop/widgets/card_widget.dart';
-import 'package:dellyshop/widgets/carousel_pro.dart';
-import 'package:dellyshop/widgets/custom_drop_down_button.dart';
+
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/default_texfromfield.dart';
-import 'package:dellyshop/widgets/text_button.dart';
+
 import 'package:dellyshop/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 

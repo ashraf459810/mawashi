@@ -33,17 +33,17 @@ class RepositoryImp implements Repository{
 
   @override
   Future<Either<dynamic, dynamic>> postrequest(Function([String response]) model, String url, [body]) async {
-       try {
+      //  try {
        var response = await httpHelper.postrequest(url,body);
    log(response);
     var decodeddata = model(response);
    
     return Right(decodeddata);}
-    catch(e){
-          log(e.toString());
-      return Left(e);
-    }
-  }
+    // catch(e){
+    //       log(e.toString());
+    //   return Left(e);
+    // }
+  // }
 
   @override
   Future<Either> patchrequest(Function([String response]) model, String url) async {

@@ -1,71 +1,69 @@
-import 'dart:developer';
-
 import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/models/my_comment_model.dart';
-import 'package:dellyshop/models/product_item_model.dart';
-import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
+import 'package:dellyshop/screens/brand_detail/bloc/items_bloc.dart';
+
 import 'package:dellyshop/screens/brand_detail/models/item_response_model.dart';
 import 'package:dellyshop/screens/home/components/header_title.dart';
+import 'package:dellyshop/screens/product_detail/bloc/cart_bloc.dart';
 import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:dellyshop/widgets/carousel_pro.dart';
-import 'package:dellyshop/widgets/custom_color_radio_button.dart';
-import 'package:dellyshop/widgets/custom_radio_button.dart';
+
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/normal_text.dart';
 import 'package:dellyshop/widgets/star_display.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jiffy/jiffy.dart';
 
 import '../../../app_localizations.dart';
+import '../../../injection.dart';
 import '../../../util.dart';
 
 class ProductDetailBody extends StatefulWidget {
-  
   final ItemResponseModel item;
   int _value = 1;
 
-  ProductDetailBody( this.item);
+  ProductDetailBody(this.item);
 
   @override
   _ProductDetailBodyState createState() => _ProductDetailBodyState();
 }
 
 class _ProductDetailBodyState extends State<ProductDetailBody> {
-  late  String desc ;
-
+  late String desc;
+    CartBloc cartBloc= sl<CartBloc>();
   List<MyCommentModel> myCommentList = [
-  MyCommentModel(
-    id: 1,
-    productName: "iPhone 11 Pro 64 GB",
-    companyName: "Apple",
-    productImage: kiPhoneImg,
-    range: 3,
-    commentDate: DateTime.now(),
-    userName: "Ufuk Zimmerman",
-    userComment:
-        "Good quality and beautiful product. The cargo arrived later than expected.",
-    isSelect: false,
-    price: 949.99,
-  ),
-
-];
+    MyCommentModel(
+      id: 1,
+      productName: "iPhone 11 Pro 64 GB",
+      companyName: "Apple",
+      productImage: kiPhoneImg,
+      range: 3,
+      commentDate: DateTime.now(),
+      userName: "Ufuk Zimmerman",
+      userComment:
+          "Good quality and beautiful product. The cargo arrived later than expected.",
+      isSelect: false,
+      price: 949.99,
+    ),
+  ];
 
   static var _subHeaderCustomStyle = TextStyle(
       color: kAppColor,
       fontWeight: FontWeight.w700,
       fontSize: kSubTitleFontSize);
 
-      @override
+  @override
   void initState() {
-      desc = widget.item.data!.description!;
+    // desc = widget.item.data!.description!;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-   
     var size = MediaQuery.of(context).size;
     return ListView(
       children: [
@@ -166,7 +164,8 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 10.0),
-                              child: StarDisplay(value: myCommentList[i].range!),
+                              child:
+                                  StarDisplay(value: myCommentList[i].range!),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -211,12 +210,29 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
 
   Center addToCart(Size size) {
     return Center(
-      child: ButtonCustom(
-        txt: ApplicationLocalizations.of(context)!.translate("add_to_cart"),
-        witdh: size.width,
-        ontap: () {},
-        bacgroudColor: kAppColor,
-        textColor: kWhiteColor,
+      child: BlocConsumer(
+        bloc: cartBloc,
+        listener: (context, state) {
+         if (state is Error){
+           Fluttertoast.showToast(msg: state.error);
+         }
+         if (state is AddToCartState){
+               Fluttertoast.showToast(msg: "Added Successfully");
+         }
+        },
+        builder: (context, state) {
+          if (state is AddToCartError){
+                return CircularProgressIndicator(color: kAppColor,backgroundColor: Colors.white,);
+          }
+          
+          return ButtonCustom(
+            txt: ApplicationLocalizations.of(context)!.translate("add_to_cart"),
+            witdh: size.width,
+            ontap: () {},
+            bacgroudColor: kAppColor,
+            textColor: kWhiteColor,
+          );
+        },
       ),
     );
   }
@@ -235,9 +251,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                 fontWeight: FontWeight.w700,
                 fontSize: kTitleFontSize),
           ),
-      
-  Html(
-    data:desc),
+          Html(data: widget.item.data!.description!),
           SizedBox(
             height: 10,
           ),
@@ -378,8 +392,8 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                       : kLightBlackTextColor,
                   fontSize: kSubTitleFontSize),
             ),
-            NormalTextWidget(widget.item.data!.price!, kAppColor,
-                kLargeFontSize),
+            NormalTextWidget(
+                widget.item.data!.price!, kAppColor, kLargeFontSize),
           ],
         ),
       ],
@@ -441,19 +455,22 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
       height: 300.0,
       child: Hero(
         tag: "hero-Item-${widget.item.data!.productId.toString()}",
-        child:  Carousel(
+        child: Carousel(
           dotColor: Colors.black26,
           dotIncreaseSize: 1.7,
           dotBgColor: Colors.transparent,
           autoplay: false,
           boxFit: BoxFit.fill,
-          images: 
-       widget.item.data!.images!.map((e) {
-          var w = NetworkImage(e,);
-         
-          return w;
-        }).toList()
-          , overlayShadowColors: Colors.transparent, radius: Radius.zero, radiusDouble: 0,
+          images: widget.item.data!.images!.map((e) {
+            var w = NetworkImage(
+              e,
+            );
+
+            return w;
+          }).toList(),
+          overlayShadowColors: Colors.transparent,
+          radius: Radius.zero,
+          radiusDouble: 0,
         ),
       ),
     );
@@ -481,8 +498,8 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: Text(
-                          ApplicationLocalizations.of(context)
-                             ! .translate("description"),
+                          ApplicationLocalizations.of(context)!
+                              .translate("description"),
                           style: TextStyle(
                               color: kAppColor, fontSize: kTitleFontSize),
                         ),

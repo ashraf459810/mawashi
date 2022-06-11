@@ -8,7 +8,7 @@ import 'package:dellyshop/screens/home/models/categories_response_model.dart';
 import 'package:dellyshop/screens/product_detail/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_html/flutter_html.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
 
 

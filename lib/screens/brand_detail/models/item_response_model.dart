@@ -113,7 +113,7 @@ class Data {
     String ?lengthClassId;
     String ?subtract;
     int ?rating;
-    int ?reviews;
+    dynamic reviews;
     String ?minimum;
     String ?sortOrder;
     String ?status;

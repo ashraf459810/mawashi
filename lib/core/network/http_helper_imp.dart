@@ -51,7 +51,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
 
 
     
-    log(body);
+   
      log(_baseUrl+url);
    
    
@@ -68,7 +68,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
         throw NoInternet("No Internet");
     
 
-        break;
+      
     }
 
     final response = await client.post(
@@ -77,9 +77,9 @@ final String _baseUrl = "https://livestock.mjnna.com";
         ),
         body: body,
         
-        headers:  {   'Content-Type': 'application/json',
+        // headers:  {   'Content-Type': 'application/json',
         
-}
+// }
 );
         log(response.body);
     log("here from http $url");
@@ -138,7 +138,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
         throw NoInternet("No Internet");
    
 
-        break;
+  
     }
 
     final response = await client.patch(

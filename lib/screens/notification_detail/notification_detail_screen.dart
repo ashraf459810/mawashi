@@ -1,7 +1,6 @@
-import 'package:dellyshop/constant.dart';
+
 import 'package:dellyshop/models/notification_model.dart';
-import 'package:dellyshop/widgets/custom_scaffold.dart';
-import 'package:dellyshop/widgets/normal_text.dart';
+
 import 'package:flutter/material.dart';
 
 import 'components/notification_detail_body.dart';

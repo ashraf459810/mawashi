@@ -1,6 +1,5 @@
 import 'package:dellyshop/models/product_item_model.dart';
 import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
-import 'package:dellyshop/screens/product_detail/product_detail_screen.dart';
 import 'package:dellyshop/widgets/shimmer_widger.dart';
 import 'package:flutter/material.dart';
 

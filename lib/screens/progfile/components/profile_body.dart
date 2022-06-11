@@ -10,8 +10,7 @@ import 'package:dellyshop/screens/settings/settings_screen.dart';
 import 'package:dellyshop/util.dart';
 import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:dellyshop/widgets/normal_text.dart';
-import 'package:dellyshop/widgets/page_title.dart';
-import 'package:dellyshop/widgets/text_widget.dart';
+
 import 'package:flutter/material.dart';
 
 class ProfileBody extends StatefulWidget {

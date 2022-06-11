@@ -26,6 +26,7 @@ class CustomTextFromField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CardWidget(
+      
       height: height!,
       childWidget: Theme(
         data: ThemeData(
@@ -44,7 +45,7 @@ class CustomTextFromField extends StatelessWidget {
             labelText: placeHolder,
             icon: Icon(
               icon,
-              color: kAppColor,
+              color: kPrimaryColor,
             ),
             labelStyle: TextStyle(
                 fontSize: 15.0,

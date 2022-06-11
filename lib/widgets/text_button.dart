@@ -1,4 +1,6 @@
+import 'package:dellyshop/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CutomTextButton extends StatelessWidget {
   String text;
@@ -14,8 +16,8 @@ class CutomTextButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-            color: Colors.white,
-            fontSize: 13.0,
+            color: kAppColor,
+            fontSize: 20.0.sp,
             fontWeight: FontWeight.w600,
             fontFamily: "Poppins"),
       ),

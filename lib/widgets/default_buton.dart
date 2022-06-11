@@ -27,9 +27,9 @@ class ButtonCustom extends StatelessWidget {
           height: height,
           minWidth: witdh,
           child: RaisedButton(
-              color: bacgroudColor,
+              color:kAppColor,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(30.0),
                   side: BorderSide(color: borderColor)),
               onPressed: ontap,
               child: Text(

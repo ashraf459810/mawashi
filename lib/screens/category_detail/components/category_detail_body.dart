@@ -1,5 +1,4 @@
-import 'package:dellyshop/models/brand_model.dart';
-import 'package:dellyshop/screens/brand_detail/brand_detail_screen.dart';
+
 import 'package:dellyshop/screens/home/models/categories_response_model.dart';
 import 'package:flutter/material.dart';
 

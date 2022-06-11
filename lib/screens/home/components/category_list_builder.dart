@@ -1,5 +1,4 @@
 
-import 'package:dellyshop/screens/home/bloc/homepage_bloc.dart';
 import 'package:dellyshop/screens/home/components/category_item_builder.dart';
 import 'package:dellyshop/screens/home/models/categories_response_model.dart';
 

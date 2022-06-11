@@ -8,3 +8,7 @@ abstract class HomepageEvent {}
 class GetCategoriesEvent extends HomepageEvent {
   
 }
+
+class GetTopRatingItemsEvent extends HomepageEvent{
+  
+}

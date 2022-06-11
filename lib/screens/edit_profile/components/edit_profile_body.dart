@@ -125,7 +125,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   }
 
   _imgFromGallery() async {
-    var image = await picker.getImage(source: ImageSource.gallery);
+    var image = await picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
       if (image != null) {

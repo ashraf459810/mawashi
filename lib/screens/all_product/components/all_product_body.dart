@@ -1,6 +1,6 @@
 import 'package:dellyshop/models/product_item_model.dart';
 import 'package:dellyshop/screens/home/components/product_item_builder.dart';
-import 'package:dellyshop/screens/product_detail/product_detail_screen.dart';
+
 import 'package:dellyshop/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
