@@ -10,7 +10,7 @@
     <application
 
         android:name="${applicationName}"
-        android:label="dellyshop"
+        android:label="Mawashi"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/delly_icon">
         <activity

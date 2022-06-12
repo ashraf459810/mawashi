@@ -59,7 +59,7 @@ class _MainAppState extends State<MainApp> {
             // If device not support with locale to get language code then default get first on from the list
             return supportedLocales.first;
           },
-          title: 'Delly Shop',
+          title: 'Mawashi',
           initialRoute: SplashScreen.routeName,
           home: SplashScreen(),
           
