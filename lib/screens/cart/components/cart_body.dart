@@ -56,16 +56,18 @@ class _CartBodyState extends State<CartBody> {
         }
         if (state is GetCartState){
           cartResponseModel =state.cartResponseModel;
+
+          if (state.cartResponseModel.data!.isNotEmpty){
           for (var i=0 ; i < state.cartResponseModel.data!.length ; i++){
-            totalpay = totalpay + state.cartResponseModel.data![index].price!;
-          }
+            totalpay = totalpay + state.cartResponseModel.data![i].price!;
+          }}
         }
 
         return Container(
           margin: EdgeInsets.all(10.0),
           child: ListView(
             children: [
-              //Product List
+              //Product Lists
             cartResponseModel.data!.isNotEmpty?  SizedBox(
               
                 child: ListView.builder(

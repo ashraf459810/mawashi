@@ -2,8 +2,8 @@ import 'package:dellyshop/constant.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatefulWidget {
-  String text;
-  Color textColor;
+ final String text;
+  final Color textColor;
   TextWidget(this.text, this.textColor);
 
   @override
