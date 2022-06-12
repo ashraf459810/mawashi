@@ -1,19 +1,24 @@
+import 'dart:developer';
+
 import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/core/const/const.dart';
 
 import 'package:dellyshop/screens/brand_detail/bloc/items_bloc.dart';
 
 import 'package:dellyshop/screens/brand_detail/models/item_response_model.dart';
-import 'package:dellyshop/screens/cart/cart_screen.dart';
+import 'package:dellyshop/screens/cart/components/cart_screen.dart';
+
 import 'package:dellyshop/screens/product_detail/components/product_detail_body.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../app_localizations.dart';
 import '../../injection.dart';
 import '../../util.dart';
+import '../cart/bloc/cart_bloc.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final String itemId;
@@ -25,7 +30,9 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  ItemResponseModel ?item  ;
+  int count = 0;
+  CartBloc cartBloc   = sl<CartBloc>();
+  ItemResponseModel? item;
   ItemsBloc itemsBloc = sl<ItemsBloc>();
   @override
   void initState() {
@@ -38,21 +45,29 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return BlocConsumer(
       bloc: itemsBloc,
       listener: (context, state) {
-        if (state is Error){
+        if (state is Error) {
           Fluttertoast.showToast(msg: state.error);
         }
-        },
-        builder: (context, state) {
-          if (State is ItemsInitial){
-                     return CircularProgressIndicator(color: AppColor.blue,backgroundColor: Colors.white,);
-          }
-          if (state is GatItemDetailsState){
-    
-item = state.item;
-          }
-          if (state is Loading){
-            return Scaffold(body: Center(child: CircularProgressIndicator(color: AppColor.blue,backgroundColor: Colors.white,)));
-          }
+      },
+      builder: (context, state) {
+        if (State is ItemsInitial) {
+          return CircularProgressIndicator(
+            color: AppColor.blue,
+            backgroundColor: Colors.white,
+          );
+        }
+        if (state is GatItemDetailsState) {
+          item = state.item;
+          
+        }
+        if (state is Loading) {
+          return Scaffold(
+              body: Center(
+                  child: CircularProgressIndicator(
+            color: AppColor.blue,
+            backgroundColor: Colors.white,
+          )));
+        }
         return Scaffold(
             backgroundColor:
                 Utils.isDarkMode ? kDarkDefaultBgColor : kDefaultBgColor,
@@ -85,9 +100,21 @@ item = state.item;
                       CircleAvatar(
                         radius: 10.0,
                         backgroundColor: Colors.red,
-                        child: Text(
-                          "0",
-                          style: TextStyle(color: Colors.white, fontSize: 13.0),
+                        child: BlocBuilder(
+                          bloc:cartBloc ,
+                          builder: (context, state) {
+                            log("here from notifications");
+                            print("here from count");
+                            if (state is AddToCartState){
+                                sl<SharedPreferences>().setString(User.notificationCounter, state.addToCartResponseModel.data!.totalProductCount.toString());
+
+                            }
+                            return Text(
+                         sl<SharedPreferences>().getString(User.notificationCounter)??'0',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 13.0),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -95,8 +122,7 @@ item = state.item;
                 ),
               ],
             ),
-            body:  item !=null? ProductDetailBody(item!):SizedBox()
-            );
+            body: item != null ? ProductDetailBody(item!) : SizedBox());
       },
     );
   }

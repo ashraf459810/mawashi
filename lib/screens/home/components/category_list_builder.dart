@@ -25,7 +25,7 @@ class _CateogryListBuilderState extends State<CateogryListBuilder> {
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
-          height: 60,
+          height: 80,
           child:
                ListView.builder(
                   scrollDirection: Axis.horizontal,

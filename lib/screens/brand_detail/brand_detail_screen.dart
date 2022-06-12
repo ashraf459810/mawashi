@@ -47,7 +47,7 @@ itemsBloc.add(GetCategoryItemsEvent(widget.category.id!));
     super.initState();
   }
   /// Create Modal BottomSheet (SortBy)
-  void _modalBottomSheetSort() {
+  void modalBottomSheetSort() {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
@@ -106,7 +106,7 @@ itemsBloc.add(GetCategoryItemsEvent(widget.category.id!));
   }
 
   /// Create Modal BottomSheet (RefineBy)
-  void _modalBottomSheetRefine() {
+  void modalBottomSheetRefine() {
     showModalBottomSheet(
         context: context,
         builder: (builder) {

@@ -34,7 +34,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   void initState() {
     homepageBloc.add(GetCategoriesEvent());
-    homepageBloc.add(GetTopRatingItemsEvent());
+
     super.initState();
   }
 
@@ -93,6 +93,7 @@ class _HomeBodyState extends State<HomeBody> {
                   }
                   if (state is GetCategoriesState) {
                     categories = state.categoriesResponseModel.data!;
+                        homepageBloc.add(GetTopRatingItemsEvent());
                   }
                   return CateogryListBuilder(categories: categories);
                 }),

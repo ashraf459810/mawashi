@@ -24,7 +24,7 @@ class _CategoryListItemBuilderState extends State<CategoryListItemBuilder> {
           borderRadius: BorderRadius.circular(10.0),
           
           image: DecorationImage(
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.fill,
             image: NetworkImage(widget._categoryModel.image!),
           ),
         ),
@@ -33,10 +33,10 @@ class _CategoryListItemBuilderState extends State<CategoryListItemBuilder> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
-                gradient: LinearGradient(
-                    colors: [Colors.transparent, kAppColor.withOpacity(0.7)],
-                    begin: FractionalOffset.topCenter,
-                    end: FractionalOffset.bottomCenter),
+                // gradient: LinearGradient(
+                //     colors: [Colors.transparent, kAppColor.withOpacity(0.7)],
+                //     begin: FractionalOffset.topCenter,
+                //     end: FractionalOffset.bottomCenter),
               ),
             ),
             Center(

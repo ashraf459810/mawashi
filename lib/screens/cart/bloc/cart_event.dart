@@ -10,3 +10,8 @@ class AddToCartEvent extends CartEvent {
 
   AddToCartEvent(this.id, this.quantity);
 }
+
+
+class GetCartEvent extends CartEvent{
+  
+}

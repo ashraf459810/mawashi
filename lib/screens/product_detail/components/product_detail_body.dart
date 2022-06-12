@@ -4,7 +4,7 @@ import 'package:dellyshop/screens/brand_detail/bloc/items_bloc.dart';
 
 import 'package:dellyshop/screens/brand_detail/models/item_response_model.dart';
 import 'package:dellyshop/screens/home/components/header_title.dart';
-import 'package:dellyshop/screens/product_detail/bloc/cart_bloc.dart';
+
 import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:dellyshop/widgets/carousel_pro.dart';
 
@@ -21,6 +21,7 @@ import 'package:jiffy/jiffy.dart';
 import '../../../app_localizations.dart';
 import '../../../injection.dart';
 import '../../../util.dart';
+import '../../cart/bloc/cart_bloc.dart';
 
 class ProductDetailBody extends StatefulWidget {
   final ItemResponseModel item;
@@ -216,19 +217,26 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
          if (state is Error){
            Fluttertoast.showToast(msg: state.error);
          }
-         if (state is AddToCartState){
-               Fluttertoast.showToast(msg: "Added Successfully");
-         }
+             if (state is AddToCartState){
+            Fluttertoast.showToast(msg: "تمت الاضافة الي السلة");
+          }
+        //  if (state is AddToCartState){
+        //        Fluttertoast.showToast(msg: "Added Successfully");
+        //  }
         },
         builder: (context, state) {
-          if (state is AddToCartError){
+          if (state is LoadingAddToCart){
                 return CircularProgressIndicator(color: kAppColor,backgroundColor: Colors.white,);
           }
+      
           
           return ButtonCustom(
             txt: ApplicationLocalizations.of(context)!.translate("add_to_cart"),
             witdh: size.width,
-            ontap: () {},
+            ontap: () {
+              cartBloc.add(AddToCartEvent(widget.item.data!.productId!, widget._value.toString()));
+
+            },
             bacgroudColor: kAppColor,
             textColor: kWhiteColor,
           );
@@ -344,7 +352,8 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
               onTap: () {
                 setState(() {
                   print("Click");
-                  if (widget._value != 10) widget._value = widget._value + 1;
+             
+              widget._value = widget._value + 1;
                 });
               },
               child: Container(

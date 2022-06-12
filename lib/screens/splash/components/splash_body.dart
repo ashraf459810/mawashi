@@ -6,6 +6,7 @@ import 'package:dellyshop/core/widgets/container.dart';
 import 'package:dellyshop/screens/login/login_screen.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -26,6 +27,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
     return Scaffold(
 
       body:container(
- hight: MediaQuery.of(context).size.height,
-        width: double.infinity,child: Image.asset('assets/images/slpash.jpg',fit: BoxFit.cover,))
+ 
+ 
+        width: double.infinity,child: Image.asset('assets/images/slpash.jpg',width: double.infinity,fit: BoxFit.fill,))
   );}}
