@@ -15,33 +15,45 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-
-  final UseCase addProductToCart ;
+  final UseCase addProductToCart;
   final UseCase getCart;
-  String ? session = sl<SharedPreferences>().getString(User.token) ;
+
   CartBloc(this.addProductToCart, this.getCart) : super(CartInitial()) {
     on<CartEvent>((event, emit) async {
-      if (event is AddToCartEvent){
+      if (event is AddToCartEvent) {
+        String? session = sl<SharedPreferences>().getString(User.token);
         emit(LoadingAddToCart());
-        var response= await addProductToCart.postUsecase( session!=null? "/index.php?route=extension/mstore/cart/add&session=$session" :"/index.php?route=extension/mstore/cart/add" , ([response]) => addToCartResponseModelFromJson(response!), json.encode([{"product_id":event.id,"quantity":event.quantity}]));
+        var response = await addProductToCart.postUsecase(
+            session != null
+                ? "/index.php?route=extension/mstore/cart/add&session=$session"
+                : "/index.php?route=extension/mstore/cart/add",
+            ([response]) => addToCartResponseModelFromJson(response!),
+            json.encode([
+              {"product_id": event.id, "quantity": event.quantity}
+            ]));
         response.fold((l) => emit(AddToCartError(l.message)), (r) {
+          print(r.session);
           sl<SharedPreferences>().setString(User.token, r.session);
-          emit(AddToCartState(r));});
+          emit(AddToCartState(r));
+        });
       }
 
-          if (event is GetCartEvent){
+      if (event is GetCartEvent) {
+        print("here from get cart");
+        String? session = sl<SharedPreferences>().getString(User.token);
         emit(LoadingCartState());
-        if (session==null){
-          emit (GetCartState(CartResponseModel(data: [])));
+        if (session == null) {
+          print("session null");
+          emit(GetCartState(CartResponseModel(data: [])));
+        } else {
+          var response = await getCart.getUsecase(
+              "/index.php?route=extension/mstore/cart/index&session=$session",
+              ([response]) => cartResponseModelFromJson(response!));
+          response.fold((l) => emit(GetCartError(l.message)), (r) {
+            emit(GetCartState(r));
+          });
         }
-        else {
-        var response= await getCart.getUsecase( "/index.php?route=extension/mstore/cart/index&session=$session"  , ([response]) => cartResponseModelFromJson(response!));
-        response.fold((l) => emit(GetCartError(l.message)), (r) {
-          emit(GetCartState(r));});
-        }}
-
-
-      
+      }
     });
   }
 }

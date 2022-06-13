@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Delly Shop",
+                          "Mawashi",
                           textAlign: TextAlign.start,
                           style: TextStyle(
                               color: kAppColor,

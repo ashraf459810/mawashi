@@ -30,7 +30,7 @@ class _LoginBodyState extends State<LoginBody> {
         decoration: BoxDecoration(
             image: DecorationImage(
           image: AssetImage("assets/images/4.SignIn.jpg"),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         )),
         child: Container(
           /// Set gradient color in image (Click to open code)
