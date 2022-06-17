@@ -1,5 +1,6 @@
 import 'package:dellyshop/app_localizations.dart';
 import 'package:dellyshop/constant.dart';
+import 'package:dellyshop/models/address_model.dart';
 import 'package:dellyshop/models/product_item_model.dart';
 import 'package:dellyshop/screens/home/components/product_item_builder.dart';
 import 'package:dellyshop/widgets/card_widget.dart';
@@ -135,7 +136,7 @@ class _SearchBodyState extends State<SearchBody> {
               controller: new ScrollController(keepScrollOffset: false),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              children: newestLit.take(3).map(
+              children: addressList.take(3).map(
                 (value) {
                   return Hero(
                     tag: "hero-Item-${value.id}",

@@ -12,3 +12,5 @@ class GetCategoriesEvent extends HomepageEvent {
 class GetTopRatingItemsEvent extends HomepageEvent{
   
 }
+
+class GetSliderEvent extends HomepageEvent{}

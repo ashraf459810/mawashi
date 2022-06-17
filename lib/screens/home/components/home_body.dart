@@ -1,5 +1,6 @@
 import 'package:dellyshop/app_localizations.dart';
 import 'package:dellyshop/constant.dart';
+import 'package:dellyshop/models/product_item_model.dart';
 import 'package:dellyshop/screens/all_product/all_product_screen.dart';
 
 import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
@@ -97,7 +98,7 @@ class _HomeBodyState extends State<HomeBody> {
                   }
                   return CateogryListBuilder(categories: categories);
                 }),
-            CarouselViewBuilder(),
+            CarouselViewBuilder(homepageBloc: homepageBloc),
             // HeaderTitle(
             //     ApplicationLocalizations.of(context)!.translate("best_seller"),
             //     ApplicationLocalizations.of(context)!.translate("view_all"),
@@ -111,7 +112,7 @@ class _HomeBodyState extends State<HomeBody> {
                 ApplicationLocalizations.of(context)!.translate("view_all"),
                 Utils.isDarkMode ? kDarkBlackFontColor : kLightBlackTextColor,
                 () {
-              Navigator.of(context).pushNamed(AllProductItemScreen.routeName);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AllProductItemScreen(items: topRating),));
             }),
             BlocConsumer(
               bloc: homepageBloc,
@@ -147,6 +148,7 @@ class _HomeBodyState extends State<HomeBody> {
                 }
                 if (state is GetTopRatingItemsState){
                   topRating =state.topRatingResponseModel.data!;
+                  homepageBloc.add(GetSliderEvent());
                 }
                 return GridListBuilder(topRating: topRating,);
               },

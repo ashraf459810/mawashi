@@ -1,15 +1,11 @@
 import 'package:dellyshop/app_localizations.dart';
 import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/core/const/const.dart';
-import 'package:dellyshop/models/address_model.dart';
-import 'package:dellyshop/screens/add_adress/add_address_screen.dart';
 import 'package:dellyshop/screens/cart/bloc/cart_bloc.dart';
 import 'package:dellyshop/screens/cart/model/cart_response_model.dart';
 import 'package:dellyshop/screens/select_credit_card/select_credit_card_screen.dart';
 import 'package:dellyshop/widgets/card_widget.dart';
-import 'package:dellyshop/widgets/custom_drop_down_button.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
-import 'package:dellyshop/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,7 +26,7 @@ class _CartBodyState extends State<CartBody> {
   double ?totalListHeight;
   double itemHeight = 120;
   int index = 1;
-  int value = 2;
+  int value = 1;
   int pay = 200;
   double totalpay = 0;
   @override
@@ -54,12 +50,16 @@ class _CartBodyState extends State<CartBody> {
         if (state is LoadingCartState){
           return Center(child: CircularProgressIndicator(color: AppColor.blue,backgroundColor: Colors.white,));
         }
+        if (state is AddToCartState){
+          cartBloc.add(GetCartEvent());
+        }
         if (state is GetCartState){
+          totalpay = 0;
           cartResponseModel =state.cartResponseModel;
 
           if (state.cartResponseModel.data!.isNotEmpty){
           for (var i=0 ; i < state.cartResponseModel.data!.length ; i++){
-            totalpay = totalpay + state.cartResponseModel.data![i].price!;
+            totalpay = totalpay + state.cartResponseModel.data![i].total! ;
           }}
         }
 
@@ -312,7 +312,7 @@ class _CartBodyState extends State<CartBody> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 18.0),
                                 child: Text(
-                                  value.toString(),
+                                  product.quantity.toString(),
                                   style: TextStyle(
                                       color: Utils.isDarkMode
                                           ? kDarkTextColorColor
@@ -323,10 +323,7 @@ class _CartBodyState extends State<CartBody> {
                               /// Increasing value of item
                               InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    value = value + 1;
-                                  
-                                  });
+                              cartBloc.add(AddToCartEvent(product.productId.toString(), 1.toString()));
                                 },
                                 child: Container(
                                   height: 30.0,

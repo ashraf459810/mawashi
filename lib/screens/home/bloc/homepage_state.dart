@@ -28,3 +28,11 @@ class GetTopRatingItemsState extends HomepageState{
 
   GetTopRatingItemsState(this.topRatingResponseModel);
 }
+
+class GetSliderState extends HomepageState{
+  final SliderResponseModel sliderResponseModel;
+
+  GetSliderState(this.sliderResponseModel);
+}
+
+class LoadingSliderState extends HomepageState{}

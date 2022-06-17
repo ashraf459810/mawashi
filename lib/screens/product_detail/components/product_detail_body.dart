@@ -218,7 +218,7 @@ class _ProductDetailBodyState extends State<ProductDetailBody> {
            Fluttertoast.showToast(msg: state.error);
          }
              if (state is AddToCartState){
-            Fluttertoast.showToast(msg: "تمت الاضافة الي السلة");
+            // Fluttertoast.showToast(msg: "تمت الاضافة الي السلة");
           }
         //  if (state is AddToCartState){
         //        Fluttertoast.showToast(msg: "Added Successfully");

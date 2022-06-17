@@ -22,7 +22,7 @@ final sl = GetIt.instance;
 Future iniGetIt() async {
 
      sl.registerFactory(
-    () => HomepageBloc(sl(),sl()
+    () => HomepageBloc(sl(),sl(),sl()
      
     ),
   );
