@@ -81,7 +81,7 @@ class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
                       return GestureDetector(onTap: (){
                         print(e.type);
                         if(e.type=="Category"){
-                          // nav(context, BrandDetailScreen(category: Datum(),));
+                          nav(context, BrandDetailScreen(category: Datum(id: e.id,description: '',count: '',name: ''),));
 
                         }
                       else   if(e.type=="Product"){

@@ -174,11 +174,11 @@ itemsBloc.add(GetCategoryItemsEvent(widget.category.id!));
           decoration: new BoxDecoration(
             image: new DecorationImage(
               fit: BoxFit.cover,
-              image: new NetworkImage(widget.category.image!),
+              image:   NetworkImage(widget.category.image??''),
             ),
             shape: BoxShape.rectangle,
           ),
-          child: Container(
+          child:  Container(
             margin: EdgeInsets.only(top: 130.0),
             decoration: BoxDecoration(),
           ),
@@ -209,7 +209,10 @@ return     Scaffold(
                   Center(child: CircularProgressIndicator(color: AppColor.blue,backgroundColor: Colors.white,)); 
                 }
                 
-      return CustomScrollView(
+      return 
+       widget.category.image!=null?
+      
+      CustomScrollView(
           scrollDirection: Axis.vertical,
           slivers: <Widget>[
             /// Appbar Custom using a SliverAppBar
@@ -232,7 +235,7 @@ return     Scaffold(
                         fontWeight: FontWeight.w700),
                   ),
                   background: Material(
-                    child: hero,
+                    child:  hero,
                   )),
             ),
   
@@ -281,38 +284,66 @@ return     Scaffold(
             ),
   
             /// Create Grid Item
-     SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ProductDetailsScreen( itemId: items[index].productId!,)));
-                          },
-                          child: FittedBox(
-                            child: ProductItemBuilder(
-                                isDiscount: false,
-                                productItem: items[index]),
-                          ));
-                    },
-                    childCount: items.length,
-                  ),
+     Container(
+       child: SliverGrid(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProductDetailsScreen( itemId: items[index].productId!,)));
+                            },
+                            child: FittedBox(
+                              child: ProductItemBuilder(
+                                  isDiscount: false,
+                                  productItem: items[index]),
+                            ));
+                      },
+                      childCount: items.length,
+                    ),
   
-                  /// Setting Size for Grid Item
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 250.0,
-                    mainAxisSpacing: 7.0,
-                    crossAxisSpacing: 7.0,
-                    childAspectRatio: 0.605,
-                  ),
+                    /// Setting Size for Grid Item
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 250.0,
+                      mainAxisSpacing: 7.0,
+                      crossAxisSpacing: 7.0,
+                      childAspectRatio: 0.605,
+                    ),
+                  
                 
-              
-            ),
+              ),
+     ),
           ],
-        );
+       
+        ):     Container(
+       child: GridView.builder(gridDelegate:          SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 250.0,
+                      mainAxisSpacing: 7.0,
+                           
+                      crossAxisSpacing: 7.0,
+                      childAspectRatio: 0.605,
+                    ),itemBuilder:   (BuildContext context, int index) {
+                        return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProductDetailsScreen( itemId: items[index].productId!,)));
+                            },
+                            child: FittedBox(
+                              child: ProductItemBuilder(
+                                  isDiscount: false,
+                                  productItem: items[index]),
+                            ));
+                            
+                      }, 
+                      itemCount:         items.length,
+     )
+     );
        }
 ));
   }

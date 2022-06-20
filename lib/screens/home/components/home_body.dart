@@ -98,6 +98,8 @@ class _HomeBodyState extends State<HomeBody> {
                   }
                   return CateogryListBuilder(categories: categories);
                 }),
+
+                
             CarouselViewBuilder(homepageBloc: homepageBloc),
             // HeaderTitle(
             //     ApplicationLocalizations.of(context)!.translate("best_seller"),
