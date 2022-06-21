@@ -1,5 +1,4 @@
 import 'package:dellyshop/app_localizations.dart';
-import 'package:dellyshop/widgets/custom_scaffold.dart';
 import 'package:dellyshop/widgets/page_title.dart';
 import 'package:flutter/material.dart';
 

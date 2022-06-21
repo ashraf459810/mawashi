@@ -7,6 +7,7 @@ import '../../../app_localizations.dart';
 import '../../../constant.dart';
 import '../../../util.dart';
 
+// ignore: must_be_immutable
 class MyFavoritesBody extends StatefulWidget {
   // ignore: deprecated_member_use
   var favList =  <ProductItemModel>[];

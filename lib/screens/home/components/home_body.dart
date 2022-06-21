@@ -1,6 +1,6 @@
 import 'package:dellyshop/app_localizations.dart';
 import 'package:dellyshop/constant.dart';
-import 'package:dellyshop/models/product_item_model.dart';
+
 import 'package:dellyshop/screens/all_product/all_product_screen.dart';
 
 import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
@@ -94,7 +94,7 @@ class _HomeBodyState extends State<HomeBody> {
                   }
                   if (state is GetCategoriesState) {
                     categories = state.categoriesResponseModel.data!;
-                        homepageBloc.add(GetTopRatingItemsEvent());
+                        homepageBloc.add(GetTopRatingItemsEvent(1.toString()));
                   }
                   return CateogryListBuilder(categories: categories);
                 }),

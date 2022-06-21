@@ -57,6 +57,3 @@ class _GridListBuilderState extends State<GridListBuilder> {
   }
 }
 
-void _onTileClicked(int index) {
-  debugPrint("You tapped on item $index");
-}

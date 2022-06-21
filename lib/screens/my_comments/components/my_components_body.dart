@@ -73,7 +73,8 @@ class _MyCommentsBodyState extends State<MyCommentsBody>
     return AnimatedSize(
       duration: new Duration(seconds: 1),
       curve: Curves.elasticOut,
-      vsync: this,
+      
+   
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: CardWidget(

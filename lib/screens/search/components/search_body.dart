@@ -1,7 +1,6 @@
 import 'package:dellyshop/app_localizations.dart';
 import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/models/address_model.dart';
-import 'package:dellyshop/models/product_item_model.dart';
 import 'package:dellyshop/screens/home/components/product_item_builder.dart';
 import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:flutter/material.dart';

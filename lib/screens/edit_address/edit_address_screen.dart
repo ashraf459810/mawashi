@@ -3,6 +3,7 @@ import 'package:dellyshop/screens/edit_address/components/edit_address_body.dart
 import 'package:dellyshop/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class EditAddressScreen extends StatelessWidget {
   Address address;
   EditAddressScreen(this.address);

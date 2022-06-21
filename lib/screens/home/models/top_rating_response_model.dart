@@ -6,12 +6,12 @@ import 'dart:convert';
 
 import 'package:dellyshop/screens/brand_detail/models/category_items_response_model.dart';
 
-TopRatingResponseModel topRatingResponseModelFromJson(String str) => TopRatingResponseModel.fromJson(json.decode(str));
+ItemsResponseModel topRatingResponseModelFromJson(String str) => ItemsResponseModel.fromJson(json.decode(str));
 
-String topRatingResponseModelToJson(TopRatingResponseModel data) => json.encode(data.toJson());
+String topRatingResponseModelToJson(ItemsResponseModel data) => json.encode(data.toJson());
 
-class TopRatingResponseModel {
-    TopRatingResponseModel({
+class ItemsResponseModel {
+    ItemsResponseModel({
         this.success,
         this.error,
         this.data,
@@ -21,7 +21,7 @@ class TopRatingResponseModel {
     List<dynamic> ?error;
     List<Item> ?data;
 
-    factory TopRatingResponseModel.fromJson(Map<String, dynamic> json) => TopRatingResponseModel(
+    factory ItemsResponseModel.fromJson(Map<String, dynamic> json) => ItemsResponseModel(
         success: json["success"],
         error: List<dynamic>.from(json["error"].map((x) => x)),
         data: List<Item>.from(json["data"].map((x) => Item.fromJson(x))),

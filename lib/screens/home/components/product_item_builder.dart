@@ -5,6 +5,7 @@ import '../../../app_localizations.dart';
 import '../../../util.dart';
 import '../../brand_detail/models/category_items_response_model.dart';
 
+// ignore: must_be_immutable
 class ProductItemBuilder extends StatefulWidget {
   bool? isDiscount;
   Item ?productItem;
@@ -161,6 +162,6 @@ class _ProductItemBuilderState extends State<ProductItemBuilder> {
         ],
       ),
     );
-    ;
+    
   }
 }

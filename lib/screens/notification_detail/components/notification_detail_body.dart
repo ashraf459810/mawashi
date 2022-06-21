@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../constant.dart';
 import '../../../util.dart';
 
+// ignore: must_be_immutable
 class NotificationBody extends StatefulWidget {
   NotificationModel _notificationModel;
   NotificationBody(this._notificationModel);

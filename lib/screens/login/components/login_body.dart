@@ -2,7 +2,6 @@ import 'package:dellyshop/screens/register/register_screen.dart';
 import 'package:dellyshop/widgets/bottom_navigation_bar.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/default_texfromfield.dart';
-import 'package:dellyshop/widgets/social_button.dart';
 import 'package:dellyshop/widgets/text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

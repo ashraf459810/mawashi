@@ -23,6 +23,7 @@ import '../../../injection.dart';
 import '../../../util.dart';
 import '../../cart/bloc/cart_bloc.dart';
 
+// ignore: must_be_immutable
 class ProductDetailBody extends StatefulWidget {
   final ItemResponseModel item;
   int _value = 1;

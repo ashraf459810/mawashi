@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constant.dart';
 
+// ignore: must_be_immutable
 class EditAddressBody extends StatefulWidget {
   Address address;
   EditAddressBody(this.address);

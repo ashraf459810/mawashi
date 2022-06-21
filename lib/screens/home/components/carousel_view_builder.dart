@@ -1,5 +1,6 @@
 import 'package:dellyshop/constant.dart';
 import 'package:dellyshop/core/navigate/nav.dart';
+import 'package:dellyshop/screens/all_product/all_product_screen.dart';
 import 'package:dellyshop/screens/home/bloc/homepage_bloc.dart';
 import 'package:dellyshop/screens/home/models/categories_response_model.dart';
 import 'package:dellyshop/screens/product_detail/product_detail_screen.dart';
@@ -87,6 +88,9 @@ class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
                       else   if(e.type=="Product"){
                           nav(context, ProductDetailsScreen(itemId: e.id),);
 
+                        }
+                        else {
+                            nav(context, AllProductItemScreen(items: []),);
                         }
                       },
                         child:

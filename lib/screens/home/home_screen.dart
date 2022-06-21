@@ -15,8 +15,8 @@ class HomeScreen extends StatelessWidget {
   static const routeName = "/home_screen";
   @override
   Widget build(BuildContext context) {
-    final MediaQueryData media = MediaQuery.of(context);
-    final double statusBarHeight = MediaQuery.of(context).padding.top;
+
+  
 
     return Scaffold(
         backgroundColor:

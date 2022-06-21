@@ -24,9 +24,14 @@ class Error extends HomepageState {
 }
 
 class GetTopRatingItemsState extends HomepageState{
-  final TopRatingResponseModel topRatingResponseModel;
+  final ItemsResponseModel topRatingResponseModel;
 
   GetTopRatingItemsState(this.topRatingResponseModel);
+}
+class GetItemsState extends HomepageState{
+  final ItemsResponseModel topRatingResponseModel;
+
+  GetItemsState(this.topRatingResponseModel);
 }
 
 class GetSliderState extends HomepageState{

@@ -73,7 +73,7 @@ class Datum {
     String? subtract;
     bool ?stock;
     dynamic price;
-    dynamic? total;
+    dynamic total;
     int ?reward;
     int ?points;
     String ?taxClassId;

@@ -245,6 +245,7 @@ class _PaymentBodyState extends State<PaymentBody> {
         .pushReplacementNamed(CustomBottomNavigationBar.routeName);
   }
 
+  // ignore: non_constant_identifier_names
   StartTime() async {
     return Timer(Duration(milliseconds: 1000), navigator);
   }
