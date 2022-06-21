@@ -28,7 +28,16 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
        emit (LoadingCategoryState());
        var response  = await getTopRatingItems.postUsecase("/index.php?route=extension/mstore/product/index&sort=rating&order=DESC&page=${event.page}", ([response]) => topRatingResponseModelFromJson(response!),{});
        print(response);
-       response.fold((l) => emit(Error(l.message)), (r) => emit(GetTopRatingItemsState(r)));
+       response.fold((l) => emit(Error(l.message)),(r) { 
+      
+          if (r.data.isNotEmpty){
+            items.addAll(r.data);
+        
+          }
+                 emit(GetTopRatingItemsState(ItemsResponseModel(data: items)));
+     
+        
+        });
      }
 
       if (event is GetItemsEvent){

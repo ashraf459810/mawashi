@@ -23,14 +23,22 @@ class AllProductScreenBody extends StatefulWidget {
 }
 
 class _AllProductScreenBody extends State<AllProductScreenBody> {
+  late bool isHot;
   ScrollController scrollController = ScrollController();
+  List<Item> topRatingPage1=[];
   HomepageBloc homepageBloc = sl<HomepageBloc>();
   int page = 1;
   @override
   void initState() {
     scrollController.addListener(pagination);
     if (widget.items.isEmpty) {
+
       homepageBloc.add(GetItemsEvent(page.toString()));
+        isHot = false;
+    }
+    else {
+topRatingPage1 =widget.items;
+      isHot = true;
     }
     log("herer form all");
     super.initState();
@@ -83,6 +91,9 @@ class _AllProductScreenBody extends State<AllProductScreenBody> {
             if (state is GetItemsState){
               widget.items=state.topRatingResponseModel.data!;
             }
+            if (state is GetTopRatingItemsState){
+              widget.items=state.topRatingResponseModel.data!;
+            }
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -94,7 +105,7 @@ class _AllProductScreenBody extends State<AllProductScreenBody> {
               scrollDirection: Axis.vertical,
               itemBuilder: (BuildContext context, int index) {
                 return Hero(
-                  tag: "hero-Item-${widget.items[index].model}",
+                  tag: "hero-Item-${widget.items[index].productId}",
                   child: Material(
                     child: GestureDetector(
                         onTap: () {
@@ -125,9 +136,15 @@ class _AllProductScreenBody extends State<AllProductScreenBody> {
        
       
           page ++;
+
+          if (!isHot){
   homepageBloc.add(GetItemsEvent
         (page.toString()));
-
+          }
+          else {
+  homepageBloc.add(GetTopRatingItemsEvent
+        (page.toString()));
+          }
       
       }
   }
