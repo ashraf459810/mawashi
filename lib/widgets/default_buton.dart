@@ -19,25 +19,35 @@ class ButtonCustom extends StatelessWidget {
       this.borderColor = Colors.white,
       this.witdh = 300});
   Widget build(BuildContext context) {
-    return InkWell(
+     return 
+     InkWell(
       onTap: ontap,
       splashColor: Colors.white,
       child: LayoutBuilder(builder: (context, constraint) {
-        return ButtonTheme(
+        return   Container(
           height: height,
-          minWidth: witdh,
-          child: RaisedButton(
-              color:kAppColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  side: BorderSide(color: borderColor)),
-              onPressed: ontap,
-              child: Text(
-                txt!,
-                style: TextStyle(color: textColor, fontSize: kSubTitleFontSize),
-              )),
-        );
-      }),
-    );
-  }
-}
+          width: witdh,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              colors: [
+       
+ Color(0xFF22B57D),
+      Color(0xFF00A99D),
+              ],
+              
+            )
+            
+        ),
+        child: Center(
+          child: Text(
+                  txt!,
+                  style: TextStyle(color: textColor, fontSize: kSubTitleFontSize),
+                
+          ),
+        )); }));}}
+
+  
+

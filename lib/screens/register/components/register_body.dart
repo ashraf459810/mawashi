@@ -1,11 +1,18 @@
-import 'package:dellyshop/app_localizations.dart';
-import 'package:dellyshop/constant.dart';
-import 'package:dellyshop/screens/login/login_screen.dart';
+
+
+
+
+import 'package:dellyshop/screens/activation_code/activation_code.dart';
+import 'package:dellyshop/screens/register/register_screen.dart';
 import 'package:dellyshop/widgets/bottom_navigation_bar.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
 import 'package:dellyshop/widgets/default_texfromfield.dart';
 import 'package:dellyshop/widgets/text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../app_localizations.dart';
+import '../../../constant.dart';
 
 class RegisterBody extends StatefulWidget {
   @override
@@ -16,7 +23,7 @@ class _RegisterBodyState extends State<RegisterBody> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
-    mediaQueryData.devicePixelRatio;
+  
     mediaQueryData.size.width;
     mediaQueryData.size.height;
     return Scaffold(
@@ -26,20 +33,20 @@ class _RegisterBodyState extends State<RegisterBody> {
         /// Set Background image in layout (Click to open code)
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage("assets/images/shopper2.jpg"),
-          fit: BoxFit.cover,
+          image: AssetImage("assets/images/4.SignIn.jpg"),
+          fit: BoxFit.fill,
         )),
         child: Container(
           /// Set gradient color in image (Click to open code)
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromRGBO(0, 0, 0, 0.2),
-                Color.fromRGBO(0, 0, 0, 0.7)
-              ],
-              begin: FractionalOffset.topCenter,
-              end: FractionalOffset.bottomCenter,
-            ),
+            // gradient: LinearGradient(
+            //   colors: [
+            //     Color.fromRGBO(0, 0, 0, 0.2),
+            //     Color.fromRGBO(0, 0, 0, 0.7)
+            //   ],
+            //   begin: FractionalOffset.topCenter,
+            //   end: FractionalOffset.bottomCenter,
+            // ),
           ),
 
           /// Set component layout
@@ -53,19 +60,23 @@ class _RegisterBodyState extends State<RegisterBody> {
                     child: Column(
                       children: <Widget>[
                         /// padding logo
-                        Padding(
-                            padding: EdgeInsets.only(
-                                top: mediaQueryData.padding.top + 40.0)),
-                        Image(
-                          image: AssetImage("assets/images/DellyLogo.png"),
-                          height: 100.0,
+        
+                SizedBox(height: 185.h,),
+                                    Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                          child: CustomTextFromField(
+                            onChanged: (){},
+
+                            icon: Icons.person,
+                            ispassword: false,
+                            placeHolder: ApplicationLocalizations.of(context)
+                             !   .translate("name"),
+                            inputType: TextInputType.name,
+                          ),
                         ),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                           Padding(padding: EdgeInsets.symmetric(vertical:10.0)),
+                               Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 50.0),
                           child: CustomTextFromField(
                             onChanged: (){},
 
@@ -76,41 +87,73 @@ class _RegisterBodyState extends State<RegisterBody> {
                             inputType: TextInputType.emailAddress,
                           ),
                         ),
-                        Padding(padding: EdgeInsets.symmetric(vertical: 5.0)),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        Padding(padding: EdgeInsets.symmetric(vertical:10.0)),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 50.0),
                           child: CustomTextFromField(
+                            height: 50.h,
                             onChanged: (){},
-                            icon: Icons.vpn_key,
-                            ispassword: true,
+                            icon: Icons.mobile_friendly_rounded,
+                            
+                            ispassword: false,
                             placeHolder: ApplicationLocalizations.of(context)
-                     !           .translate("password"),
-                            inputType: TextInputType.text,
+                               ! .translate("mobile"),
+                            inputType: TextInputType.emailAddress,
                           ),
                         ),
-                        CutomTextButton(
-                            ApplicationLocalizations.of(context)
-                       !         .translate("have_account"), () {
-                          Navigator.of(context)
-                              .pushNamed((LoginScreen.routeName));
-                        }),
+                           Padding(padding: EdgeInsets.symmetric(vertical:10.0)),
+                                              Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                          child: CustomTextFromField(
+                            onChanged: (){},
 
+                            icon: Icons.pin_drop,
+                            ispassword: false,
+                            placeHolder: ApplicationLocalizations.of(context)
+                             !   .translate("address"),
+                            inputType: TextInputType.name,
+                          ),
+                        ),
+                        SizedBox(height: 30.h,),
+                                    ButtonCustom(
+                          height: 60.h,
+                          witdh: 280.w,
+                          
+                          txt: ApplicationLocalizations.of(context)
+                           !   .translate("register"),
+                          ontap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ActivationCode(),));
+                          },
+                          bacgroudColor: kWhiteColor,
+                          textColor: Colors.white,
+                        ),
+                        Padding(padding: EdgeInsets.symmetric(vertical: 5.0)),
+                    
+           
+                        CutomTextButton(
+                          
+                            ApplicationLocalizations.of(context)
+                            !    .translate("not_have_account"), () {
+                          Navigator.of(context)
+                              .pushNamed((RegisterScreen.routeName));
+                        }),
                         SizedBox(
                           height: 20,
                         ),
-                        ButtonCustom(
+            
+                 ButtonCustom(
+                          height: 60.h,
+                          witdh: 280.w,
+                          
                           txt: ApplicationLocalizations.of(context)
-                             ! .translate("sign_up"),
+                           !   .translate("sign_in"),
                           ontap: () {
-                            Navigator.of(context).pushReplacementNamed(
-                                CustomBottomNavigationBar.routeName);
+                             Navigator.of(context).pop();
                           },
                           bacgroudColor: kWhiteColor,
-                          textColor: kAppColor,
+                          textColor: Colors.white,
                         ),
+         
                       ],
                     ),
                   ),

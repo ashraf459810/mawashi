@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 //Listh Colors
 const kPrimaryColor =  Color(0xFF00A99D);
+const textColor= Color(0xFF00A99D);
 const kPrimaryLightColor = Color.fromARGB(255, 0, 70, 28);
 const kWhiteColor = Color(0xFFFFFFFF);
 const kButtonColor = Color(0xFF7292E5);

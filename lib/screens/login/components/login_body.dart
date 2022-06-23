@@ -1,3 +1,4 @@
+import 'package:dellyshop/screens/login/login_screen.dart';
 import 'package:dellyshop/screens/register/register_screen.dart';
 import 'package:dellyshop/widgets/bottom_navigation_bar.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_localizations.dart';
 import '../../../constant.dart';
+import '../../activation_code/activation_code.dart';
 
 class LoginBody extends StatefulWidget {
   @override
@@ -58,7 +60,7 @@ class _LoginBodyState extends State<LoginBody> {
         
                 
                         SizedBox(
-                          height: 300.h,
+                          height: 250.h,
                         ),
                         Padding(padding: EdgeInsets.symmetric(vertical:10.0)),
                         Padding(
@@ -66,43 +68,18 @@ class _LoginBodyState extends State<LoginBody> {
                           child: CustomTextFromField(
                             height: 50.h,
                             onChanged: (){},
-                            icon: Icons.email,
+                            icon: Icons.mobile_friendly_rounded,
                             
                             ispassword: false,
                             placeHolder: ApplicationLocalizations.of(context)
-                               ! .translate("email"),
+                               ! .translate("mobile"),
                             inputType: TextInputType.emailAddress,
                           ),
                         ),
-                        Padding(padding: EdgeInsets.symmetric(vertical: 5.0)),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                          child: CustomTextFromField(
-                            height: 50.h,
-                            onChanged: (){},
-                            icon: Icons.lock,
-                            ispassword: true,
-                            placeHolder: ApplicationLocalizations.of(context)
-                           !     .translate("password"),
-                            inputType: TextInputType.text,
-                          ),
-                        ),
-                        CutomTextButton(
-                          
-                            ApplicationLocalizations.of(context)
-                            !    .translate("not_have_account"), () {
-                          Navigator.of(context)
-                              .pushNamed((RegisterScreen.routeName));
-                        }),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        ButtonCustom(
-                          height: 50.h,
-                          witdh: 250.w,
+                        SizedBox(height: 30.h,),
+                                    ButtonCustom(
+                          height: 60.h,
+                          witdh: 280.w,
                           
                           txt: ApplicationLocalizations.of(context)
                            !   .translate("sign_in"),
@@ -113,7 +90,44 @@ class _LoginBodyState extends State<LoginBody> {
                           bacgroudColor: kWhiteColor,
                           textColor: Colors.white,
                         ),
-
+                        Padding(padding: EdgeInsets.symmetric(vertical: 5.0)),
+                    
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                        //   child: CustomTextFromField(
+                        //     height: 50.h,
+                        //     onChanged: (){},
+                        //     icon: Icons.lock,
+                        //     ispassword: true,
+                        //     placeHolder: ApplicationLocalizations.of(context)
+                        //    !     .translate("password"),
+                        //     inputType: TextInputType.text,
+                        //   ),
+                        // ),
+                        CutomTextButton(
+                          
+                            ApplicationLocalizations.of(context)
+                            !    .translate("not_have_account"), () {
+                          Navigator.of(context)
+                              .pushNamed((RegisterScreen.routeName));
+                        }),
+                        SizedBox(
+                          height: 20,
+                        ),
+            
+                 ButtonCustom(
+                          height: 60.h,
+                          witdh: 280.w,
+                          
+                          txt: ApplicationLocalizations.of(context)
+                           !   .translate("sign_up"),
+                          ontap: () {
+                                        Navigator.of(context)
+                              .push(MaterialPageRoute(builder:(context) => RegisterScreen(),));
+                          },
+                          bacgroudColor: kWhiteColor,
+                          textColor: Colors.white,
+                        ),
          
                       ],
                     ),
