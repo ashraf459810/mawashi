@@ -1,5 +1,6 @@
 import 'package:dellyshop/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtonCustom extends StatelessWidget {
   @override
@@ -44,7 +45,7 @@ class ButtonCustom extends StatelessWidget {
         child: Center(
           child: Text(
                   txt!,
-                  style: TextStyle(color: textColor, fontSize: kSubTitleFontSize),
+                  style: TextStyle(color: textColor, fontSize: 18.sp,fontWeight: FontWeight.bold,),
                 
           ),
         )); }));}}

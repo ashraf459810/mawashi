@@ -1,4 +1,5 @@
- import 'dart:developer';
+ import 'dart:convert';
+import 'dart:developer';
 
 
 
@@ -77,7 +78,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
         ),
         body: body,
         
-        // headers:  {   'Content-Type': 'application/json',
+//         headers:  {   'Content-Type': 'application/json',
         
 // }
 );
@@ -100,7 +101,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
 
         return responseinjson;
       case 400:
-        throw BadRequestException(response.body.toString());
+        throw BadRequestException( jsonDecode( response.body)["error"][0]);
       case 401:
         throw UnauthorisedException(response.body.toString());
       case 403:
@@ -110,7 +111,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
         throw NoInternet("Check your connection");
       case 500:
       
-        throw InternalServerError("Internal Server Error");
+        throw InternalServerError(jsonDecode( response.body)["error"][0]);
 
       default:
         throw FetchDataException(
@@ -161,3 +162,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
 
 
 }
+
+
+
+

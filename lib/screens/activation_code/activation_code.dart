@@ -90,7 +90,7 @@ SizedBox(height: 10.h,),
 SizedBox(height: 15.h,),
  Text( ApplicationLocalizations.of(context)
                                !   .translate("didn't receive activation code",),style: TextStyle(color: textColor,fontSize: 18.sp),),
-                               SizedBox(height: 15.h,),
+                               SizedBox(height: 25.h,),
                                     ButtonCustom(
                           height: 60.h,
                           witdh: 280.w,

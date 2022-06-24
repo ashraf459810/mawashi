@@ -1,4 +1,6 @@
-import 'package:dellyshop/screens/login/login_screen.dart';
+
+import 'dart:developer';
+
 import 'package:dellyshop/screens/register/register_screen.dart';
 import 'package:dellyshop/widgets/bottom_navigation_bar.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
@@ -9,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_localizations.dart';
 import '../../../constant.dart';
-import '../../activation_code/activation_code.dart';
+
 
 class LoginBody extends StatefulWidget {
   @override
@@ -65,15 +67,26 @@ class _LoginBodyState extends State<LoginBody> {
                         Padding(padding: EdgeInsets.symmetric(vertical:10.0)),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                          child: CustomTextFromField(
-                            height: 50.h,
-                            onChanged: (){},
-                            icon: Icons.mobile_friendly_rounded,
-                            
-                            ispassword: false,
-                            placeHolder: ApplicationLocalizations.of(context)
-                               ! .translate("mobile"),
-                            inputType: TextInputType.emailAddress,
+                          child: Form(
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            child: CustomTextFromField(
+                              validation:  (String val){
+                              
+                        if (!val.startsWith ("05") ){
+                          return "الرقم يجب ان يبدأ ب ٠٥";
+                        }
+                              },
+                              height: 50.h,
+                              onChanged: (String val){
+                              
+                              },
+                              icon: Icons.mobile_friendly_rounded,
+                              
+                              ispassword: false,
+                              placeHolder: ApplicationLocalizations.of(context)
+                                 ! .translate("mobile"),
+                              inputType: TextInputType.emailAddress,
+                            ),
                           ),
                         ),
                         SizedBox(height: 30.h,),

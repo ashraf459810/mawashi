@@ -1,6 +1,8 @@
+
+
 import 'package:dellyshop/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 import '../util.dart';
 import 'card_widget.dart';
@@ -9,12 +11,14 @@ class CustomTextFromField extends StatelessWidget {
   bool? ispassword;
   String ?placeHolder;
   IconData? icon;
+  Function? validation;
   TextInputType? inputType;
   double ?height;
   bool ?isMasked = false;
   Function onChanged ;
   CustomTextFromField(
       {
+        this.validation,
         this.placeHolder,
       this.icon,
       this.inputType,
@@ -33,7 +37,14 @@ class CustomTextFromField extends StatelessWidget {
           hintColor: Colors.transparent,
         ),
         child: TextFormField(
-          onChanged: onChanged(),
+        
+          
+          validator: (value) {
+          return  validation!(value);
+          }, 
+          onChanged:((value) => {
+            onChanged(value)
+            }),
           textInputAction: TextInputAction.done,
           obscureText: ispassword!,
           style: TextStyle(
