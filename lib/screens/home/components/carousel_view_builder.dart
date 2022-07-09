@@ -57,6 +57,7 @@ class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
           );
         }
         return Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             margin: EdgeInsets.all(10.0),
             height: 182.0,
             child: _assetImages.isNotEmpty
@@ -76,7 +77,7 @@ class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
                     images: _assetImages.map((e) {
                       var w = Image.network(
                       "https://livestock.mjnna.com/image/"+  e.url!,
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                       );
 
                       return GestureDetector(onTap: (){
@@ -94,7 +95,9 @@ class _CarouselViewBuilderState extends State<CarouselViewBuilder> {
                         }
                       },
                         child:
-                      w);
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: w));
                     }).toList(),
                   )
                 : SizedBox());

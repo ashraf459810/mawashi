@@ -34,14 +34,15 @@ class _MainAppState extends State<MainApp> {
             designSize: Size(375, 812),
             builder:(context,child)=>
              MaterialApp(
+              
          routes: routes,
                     theme: theme(),
           supportedLocales: [
             Locale('en', 'US'),
-            Locale('ar', ''),
+            Locale('ar', 'AR'),
           ],
 
-          locale: Utils.appLocale,
+          locale: Locale("ar", "AR"),
           localizationsDelegates: [
             const AppLocalizationsDelegate(),
             GlobalMaterialLocalizations.delegate,

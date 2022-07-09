@@ -35,7 +35,7 @@ class _CateogryListBuilderState extends State<CateogryListBuilder> {
                       child: Material(
                         color: Utils.isDarkMode
                             ? kDarkDefaultBgColor
-                            : kDefaultBgColor,
+                            : Colors.transparent,
                         child: InkWell(
                             onTap: () {
                               Navigator.push(

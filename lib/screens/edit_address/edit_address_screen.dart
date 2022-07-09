@@ -11,7 +11,7 @@ class EditAddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: "Edit Address",
-      body: EditAddressBody(address),
+      body: EditAddressBody(),
     );
   }
 }

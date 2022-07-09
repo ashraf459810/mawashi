@@ -580,7 +580,7 @@ class setting extends StatelessWidget {
       height: 300.0,
       decoration: BoxDecoration(),
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(3.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,

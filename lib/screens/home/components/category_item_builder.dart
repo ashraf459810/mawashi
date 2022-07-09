@@ -1,7 +1,9 @@
 import 'package:dellyshop/constant.dart';
+import 'package:dellyshop/core/const/const.dart';
 
 import 'package:dellyshop/screens/home/models/categories_response_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryListItemBuilder extends StatefulWidget {
   final Datum _categoryModel;
@@ -16,42 +18,33 @@ class CategoryListItemBuilder extends StatefulWidget {
 class _CategoryListItemBuilderState extends State<CategoryListItemBuilder> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        width: 150,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: NetworkImage(widget._categoryModel.image!),
+    return Column(
+      children: [
+        Container(
+          width: 120.w,
+          height: 50.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            
+            image: DecorationImage(
+              fit: BoxFit.contain,
+              
+              image: NetworkImage("https://livestock.mjnna.com/image/"+ widget._categoryModel.icon!,),
+              
+            ),
           ),
+       
+          
         ),
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                // gradient: LinearGradient(
-                //     colors: [Colors.transparent, kAppColor.withOpacity(0.7)],
-                //     begin: FractionalOffset.topCenter,
-                //     end: FractionalOffset.bottomCenter),
-              ),
-            ),
-            Center(
-              child: Text(
-                widget._categoryModel.name!,
-                style: TextStyle(
-                    color: kWhiteColor,
-                    fontSize: kTitleFontSize,
-                    fontWeight: FontWeight.w500),
-                maxLines: 2,
-              ),
-            ),
-          ],
-        ),
-      ),
+         Text(
+            widget._categoryModel.name!.trim(),
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500),
+            maxLines: 1,
+          )
+      ],
     );
   }
 }

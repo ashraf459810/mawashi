@@ -40,9 +40,12 @@ class Datum {
         this.name,
         this.image,
         this.parent,
+        this.icon
+
     });
 
     String ?id;
+    String ? icon;
     String ?description;
     String ?count;
     String ?name;
@@ -50,6 +53,7 @@ class Datum {
     String ?parent;
 
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+      icon: json["icon"],
         id: json["id"],
         description: json["description"],
         count: json["count"],

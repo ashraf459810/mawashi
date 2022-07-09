@@ -4,6 +4,7 @@ import 'package:dellyshop/core/network/http_helper.dart';
 import 'package:dellyshop/core/network/http_helper_imp.dart';
 import 'package:dellyshop/screens/brand_detail/bloc/items_bloc.dart';
 import 'package:dellyshop/screens/cart/bloc/cart_bloc.dart';
+import 'package:dellyshop/screens/edit_address/bloc/address_bloc.dart';
 import 'package:dellyshop/screens/home/bloc/homepage_bloc.dart';
 import 'package:dellyshop/screens/register/bloc/register_bloc.dart';
 
@@ -44,7 +45,11 @@ Future iniGetIt() async {
     ),
   );
 
-
+    sl.registerLazySingleton(
+    () => AddressBloc(sl(),
+     sl()
+    ),
+  );
 
 
   //data

@@ -1,6 +1,4 @@
 
-import 'dart:developer';
-
 import 'package:dellyshop/screens/register/register_screen.dart';
 import 'package:dellyshop/widgets/bottom_navigation_bar.dart';
 import 'package:dellyshop/widgets/default_buton.dart';
