@@ -10,7 +10,7 @@ class AppColor {
 }
 
 class User {
-  static String isverify = '';
+  static String isRegistred = '';
   static String savedcontactsforemergency = "false";
   static String token = 'token';
   static String fcmToken = 'fcmtoken';

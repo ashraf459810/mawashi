@@ -58,7 +58,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                         /// padding logo
 
                         SizedBox(
-                          height: 250.h,
+                          height: 200.h,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 50.0),
@@ -157,7 +157,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                                 registerBloc.add(RegisterNewUserEvent(registerRequestBody));
                                }
                                else {
-                                Fluttertoast.showToast(msg: "Please complete your informations");
+                                Fluttertoast.showToast(msg: "الرجاء اكمال المعلومات اولا");
                                }
                               
                               },

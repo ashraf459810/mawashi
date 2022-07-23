@@ -4,7 +4,7 @@ import 'package:dellyshop/routes.dart';
 import 'package:dellyshop/screens/splash/splash_screen.dart';
 
 import 'package:dellyshop/theme.dart';
-import 'package:dellyshop/util.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,7 +32,7 @@ class _MainAppState extends State<MainApp> {
 
      return    ScreenUtilInit(
             designSize: Size(375, 812),
-            builder:(context,child)=>
+            builder:( BuildContext context,child)=>
              MaterialApp(
               
          routes: routes,

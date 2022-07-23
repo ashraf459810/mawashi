@@ -77,10 +77,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
           _baseUrl + url,
         ),
         body: body,
-        
-//         headers:  {   'Content-Type': 'application/json',
-        
-// }
+
 );
         log(response.body);
     log("here from http $url");
@@ -96,24 +93,30 @@ final String _baseUrl = "https://livestock.mjnna.com";
    
     switch (response.statusCode) {
       case 200:
+      log("200");
+      log(response.body);
         var responseinjson = (response.body);
         
 
         return responseinjson;
       case 400:
+          log("400");
         throw BadRequestException( jsonDecode( response.body)["error"][0]);
       case 401:
+          log("401");
         throw UnauthorisedException(response.body.toString());
       case 403:
-        log("error");
+        log("403");
         throw UnauthorisedException(response.body.toString());
       case 404:
+          log("404");
         throw NoInternet("Check your connection");
       case 500:
-      
+          log("500");
         throw InternalServerError(jsonDecode( response.body)["error"][0]);
 
       default:
+          log("unknown");
         throw FetchDataException(
             'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
     }

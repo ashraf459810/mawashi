@@ -28,3 +28,16 @@ class ErrorAddress extends AddAddressState{
 
   ErrorAddress(this.error);
 }
+
+
+class LoadingAddingAddressState extends AddressState{}
+
+
+
+
+class AddShippingAddressState extends AddressState{
+  
+}
+
+
+class AddPaymentAddressState extends AddressState{}

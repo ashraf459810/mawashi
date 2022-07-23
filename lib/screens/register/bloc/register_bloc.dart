@@ -17,11 +17,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   
     on<RegisterEvent>((event, emit) async {
       if (event is RegisterNewUserEvent){
-   print(event.registerRequestBody.toJson());
-        // emit (Loading());
+        emit (Loading());
         var response= await registerUser.postUsecase("/index.php?route=extension/mstore/account/register", ([response]) => registerResponseModelFromJson(response!),event.registerRequestBody.toJson());
         response.fold((l) => emit(Error(l.message)), (r) {
           sl<SharedPreferences>().setString(User.token, r.customerId);
+              sl<SharedPreferences>().setBool(User.isRegistred, true);
           emit (RegisterNewUserState(r));
         });
     }});

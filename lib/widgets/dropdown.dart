@@ -2,7 +2,6 @@ import 'package:dellyshop/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/const/const.dart';
 
 
 class DropDown extends StatefulWidget {
@@ -31,7 +30,7 @@ class _DropDownState extends State<DropDown> {
               widget.hint!,
               textAlign: TextAlign.start,
               style: TextStyle(
-                color: AppColor.blue,
+                color: Colors.black,
               ),
             )
             : Text(chosenvalue!,

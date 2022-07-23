@@ -17,3 +17,21 @@ class GetCitiesForCountryEvent extends AddressEvent{
 
   GetCitiesForCountryEvent(this.countryId);
 }
+
+
+class AddShippingAddressEvent extends AddressEvent{
+
+ final AddressBodyModel addressBodyModel;
+
+  AddShippingAddressEvent(this.addressBodyModel);
+
+}
+
+
+class AddPaymentAddressEvent extends AddressEvent {
+ final AddressBodyModel addressBodyModel;
+
+  AddPaymentAddressEvent(this.addressBodyModel);
+
+
+}

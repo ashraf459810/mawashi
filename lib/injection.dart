@@ -46,7 +46,7 @@ Future iniGetIt() async {
   );
 
     sl.registerLazySingleton(
-    () => AddressBloc(sl(),
+    () => AddressBloc(sl(),sl(),sl(),
      sl()
     ),
   );
