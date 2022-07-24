@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dellyshop/core/use_case/use_case.dart';
 import 'package:dellyshop/screens/edit_address/model/countries_response_model.dart';
@@ -29,16 +32,17 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
       }
 
           if (event is AddShippingAddressEvent){
-            print(event.addressBodyModel.toJson());
-        emit (LoadingAddingAddressState());
+
+          
+        // emit (LoadingAddingAddressState());
         var response =await addShippingAddress.postUsecase(
-          "/index.php?route=extension/mstore/shipping_address/save&lang=ar", ([response]) => response,event.addressBodyModel.toJson() );
+          "/index.php?route=extension/mstore/shipping_address/save&lang=ar", ([response]) => response,jsonEncode(event.addressBodyModel) );
         response.fold((l) => emit(ErrorAddress(l.message)), (r) => emit(AddShippingAddressState()));
       }
 
             if (event is AddPaymentAddressEvent){
         emit (LoadingAddingAddressState());
-        var response =await addShippingAddress.postUsecase("/index.php?route=extension/mstore/payment_address/save&lang=ar", ([response]) => response,event.addressBodyModel.toJson() );
+        var response =await addShippingAddress.postUsecase("/index.php?route=extension/mstore/payment_address/save&lang=ar", ([response]) => response,jsonEncode(event.addressBodyModel) );
         response.fold((l) => emit(ErrorAddress(l.message)), (r) => emit(AddPaymentAddressState()));
       }
       

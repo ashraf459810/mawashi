@@ -4,7 +4,6 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:dellyshop/core/exception/app_exceptions.dart';
 import 'package:dellyshop/core/repository/repository.dart';
 
 import '../network/http_helper.dart';
@@ -26,16 +25,10 @@ class RepositoryImp implements Repository{
     var decodeddata = model(response);
 
     return Right(decodeddata);}
-
     catch(e){
-          if (e is AppException){
-      return Left(e);}
-      else {
-        log(e.toString());
-        return Left(e);
-      }
+    
+      return Left(e);
     }
-
   }
 
   @override
@@ -46,9 +39,6 @@ class RepositoryImp implements Repository{
     var decodeddata = model(response);
    
     return Right(decodeddata);}
-    on  AppException  {
-         return Left(AppException);
-    }
     catch(e){
           log(e.toString());
       return Left(e);

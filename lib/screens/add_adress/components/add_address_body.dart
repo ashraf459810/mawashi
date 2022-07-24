@@ -182,23 +182,38 @@ class _AddAddressBodyState extends State<AddAddressBody> {
                       if (state is ErrorAddress) {
                         Fluttertoast.showToast(msg: state.error);
                       }
+                             if (state is AddShippingAddressState) {
+                        addressBloc
+                            .add(AddPaymentAddressEvent(addressBodyModel));
+                      }
+
+                             if (state is AddPaymentAddressState) {
+                    Fluttertoast.showToast(msg: "تم اضافة العنوان بنجاح");
+                      }
                     },
                     builder: (context, state) {
                       if (state is LoadingAddingAddressState) {
                         return Center(child: CircularProgressIndicator());
                       }
-                      if (state is AddPaymentAddressState) {
-                        addressBloc
-                            .add(AddPaymentAddressEvent(addressBodyModel));
-                      }
+               
+                      
                       return ButtonCustom(
                         txt: ApplicationLocalizations.of(context)!
                             .translate("save"),
                         ontap: () {
-                     
+   addressBodyModel.lastname = name;
+                          print(addressBodyModel.address1);
+                      print(addressBodyModel.address2);
+                       print(addressBodyModel.firstname);
+                        print(addressBodyModel.lastname);
+                         print(addressBodyModel.email);
+                          print(addressBodyModel.telephone);
+                           print(addressBodyModel.city);
+                            print(addressBodyModel.countryId);
                           if (addressBodyModel.address1 != null &&
                               addressBodyModel.address2 != null &&
                               addressBodyModel.firstname != null &&
+                              addressBodyModel.lastname!=null&&
                               addressBodyModel.telephone != null &&
                           addressBodyModel.countryId != null &&
                               addressBodyModel.city != null &&

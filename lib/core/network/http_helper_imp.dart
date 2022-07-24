@@ -54,7 +54,7 @@ final String _baseUrl = "https://livestock.mjnna.com";
     
    
      log(_baseUrl+url);
-   
+   print(body);
    
 
     dynamic responseJson;
@@ -76,8 +76,9 @@ final String _baseUrl = "https://livestock.mjnna.com";
         Uri.parse(
           _baseUrl + url,
         ),
-        body: body,
-
+        body:  body,
+        
+      
 );
         log(response.body);
     log("here from http $url");
@@ -93,30 +94,24 @@ final String _baseUrl = "https://livestock.mjnna.com";
    
     switch (response.statusCode) {
       case 200:
-      log("200");
-      log(response.body);
         var responseinjson = (response.body);
         
 
         return responseinjson;
       case 400:
-          log("400");
         throw BadRequestException( jsonDecode( response.body)["error"][0]);
       case 401:
-          log("401");
         throw UnauthorisedException(response.body.toString());
       case 403:
-        log("403");
+        log("error");
         throw UnauthorisedException(response.body.toString());
       case 404:
-          log("404");
         throw NoInternet("Check your connection");
       case 500:
-          log("500");
+      
         throw InternalServerError(jsonDecode( response.body)["error"][0]);
 
       default:
-          log("unknown");
         throw FetchDataException(
             'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
     }

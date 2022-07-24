@@ -50,14 +50,14 @@ class AddressBodyModel {
     );
 
     Map<String, dynamic> toJson() => {
+      "zone_id" : "0",
+      "postcode" :"0",
         "firstname": firstname,
         "lastname": lastname,
         "city": city,
         "address_1": address1,
         "address_2": address2,
         "country_id": countryId,
-        "postcode": postcode,
-        "zone_id": zoneId,
         "email": email,
         "telephone": telephone,
         "session": session,
